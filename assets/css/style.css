@@ -1,0 +1,22 @@
+@font-face {
+    font-family: 'Belligerent-Madness';
+    src:url('/assets/fonts/Belligerent-Madness.ttf.woff') format('woff'),
+        url('/assets/fonts/Belligerent-Madness.ttf.svg#Belligerent-Madness') format('svg'),
+        url('/assets/fonts/Belligerent-Madness.ttf.eot'),
+        url('/assets/fonts/Belligerent-Madness.ttf.eot?#iefix') format('embedded-opentype'); 
+    font-weight: normal;
+    font-style: normal;
+}
+
+.title-font,
+.nav-link {
+    font-family: 'Belligerent-Madness';
+}
+
+.page-header {
+    margin-bottom: 3rem;
+}
+
+.page-footer {
+    margin-top: 3rem;
+}
