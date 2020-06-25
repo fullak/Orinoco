@@ -13,11 +13,10 @@
     font-family: 'Belligerent-Madness';
 }
 
-.fi {
-    border: 1px fuchsia solid;
+.page-header {
+    margin-bottom: 3rem;
 }
 
 .page-footer {
-    position:absolute;
-    bottom:0;
+    margin-top: 3rem;
 }
