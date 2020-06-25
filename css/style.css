@@ -12,3 +12,12 @@
 .nav-link {
     font-family: 'Belligerent-Madness';
 }
+
+.fi {
+    border: 1px fuchsia solid;
+}
+
+.page-footer {
+    position:absolute;
+    bottom:0;
+}
