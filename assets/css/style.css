@@ -13,6 +13,11 @@
     font-family: 'Belligerent-Madness';
 }
 
+.products-presentation {
+    display: flex;
+    flex-direction: row;
+}
+
 .page-header {
     margin-bottom: 3rem;
 }
