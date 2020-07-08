@@ -1,19 +1,36 @@
-/* 
-SI utilisateur click sur camera (addEventListener)
-    CHARGER la liste des cameras
-SI utilisateur clic sur peluche
-    CHARGER la liste des peluches
-SINON SI utilisateur click sur meuble
-    CHARGER la liste des meubles
-/* 
+// Load and print products
 
-/*
-FUNCTION listCamera {
-    Photo:
-    nom:
-    detail:
-    prix:
-} dans /models/Camera.js
+function getProducts() {
+    fetch('http://localhost:3000/api/teddies')
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            let html = '';
+            data.forEach(function (teddies) {
+                html += `
+            <div class="card row">
+                <div class="row justify-content-start">
+                    <div class="col-5">
+                        <img src="${teddies.imageUrl}" width="400px"></img>
+                    </div>
+                    <div class="col-7">
+                        <article class="products-description">
+                            <p><strong>Modele :</strong> ${teddies.name}</p>
+                            <ul class="dropdown">
+                                <li class=>Colors : ${teddies.colors}</li>
+                            </ul>
+                            <p><strong>Prix :</strong> ${teddies.price}€</p>
+                            <p><strong>Description : </strong>${teddies.description}</p>
+                            <p><strong>Id : </strong>${teddies._id}</p>
+                            <button class="btn btn-primary" type="submit">Add to Cart</button>
+                        </article>
+                    </div>
+                </div>
+            </div>`;
+            });
+            document.getElementById('result').innerHTML = html;
+        });
+};
 
-RECUPERER dans array.camera le détail de chaques cameras TANT qu'il y en a 
-*/
+getProducts();

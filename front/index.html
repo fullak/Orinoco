@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="/front/assets/css/bootstrap-4.5.0/css/bootstrap.css">
     <link rel="stylesheet" href="/front/assets/css/style.css">
 
+    <script src="/front/assets/js/index.js" defer></script>
+
     <title>Orinoco - The Online Shop</title>
 </head>
 
@@ -18,40 +20,20 @@
     <header class="container-fluid page-header">
         <nav class="row navbar navbar-light bg-light">
             <a class="navbar-brand" href="#">
-                <img src="/front/assets/images/logo.png" width="189" height="85" class="d-inline-block align-top"
+                <img src="/images/logo.png" width="189" height="85" class="d-inline-block align-top"
                     alt="logo de la marque Orinoco">
             </a>
             <h1 class="title-font">Orinoco - WebShop</h1>
             <ul class="nav form-inline list-unstyled">
-                <li class="nav-link"><a href="#">link1</a></li>
-                <li class="nav-link"><a href="#">link2</a></li>
+                <li class="nav-link"><a href="/front/index.html">Produits</a></li>
+                <li class="nav-link"><a href="/front/pages/cart.html">Panier</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
-        <section class="container products-presentation">
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="/front/assets/images/vcam_1.jpg" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Cameras</h5>
-                    <a href="#" class="btn btn-primary" id="cameraList">Nos cameras</a>
-                </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="/front/assets/images/teddy_1.jpg" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Ours en peluche</h5>
-                    <a href="#" class="btn btn-primary" id="pelucheList">Nos peluches</a>
-                </div>
-            </div>
-            <div class="card" style="width: 18rem;">
-                <img class="card-img-top" src="/front/assets/images/oak_1.jpg" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Meubles en bois</h5>
-                    <a href="#" class="btn btn-primary" id="meubleList">Nos meubles en bois</a>
-                </div>
-            </div>
+        <section class="container products-presentation" id="main-section">
+            <div class="row" id="result"></div>
         </section>
     </main>
 
