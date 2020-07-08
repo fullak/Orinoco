@@ -13,12 +13,21 @@
     font-family: 'Belligerent-Madness';
 }
 
-.products-description {
-    
+.teddies,
+.card-title,
+.card-text {
+    display: flex;
+    justify-content: center;
+    text-align: center;
 }
 
 .page-header {
     margin-bottom: 3rem;
+}
+
+.imgProducts {
+    width: 18rem;
+    height: 12rem;
 }
 
 .page-footer {
