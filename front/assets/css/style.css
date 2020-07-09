@@ -33,3 +33,16 @@
 .page-footer {
     margin-top: 3rem;
 }
+
+a:link {
+    cursor: pointer;
+}
+
+a.card {
+    text-decoration: none;
+    color: black;
+}
+
+.brand-logo {
+    width: 4rem;
+}

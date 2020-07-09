@@ -1,28 +1,28 @@
 // Load and print products
 
 function getProducts() {
-    fetch('http://localhost:3000/api/teddies')
+    fetch('http://localhost:3000/api/cameras')
         .then(function (response) {
             return response.json();
         })
         .then(function (data) {
             let html = '';
-            data.forEach(function (teddies) {
+            data.forEach(function (cameras) {
                 html += `
             <div class="card row">
                 <div class="row justify-content-start">
                     <div class="col-sm-12 col-md-7 col-lg-5">
-                        <img src="${teddies.imageUrl}" width="400px"></img>
+                        <img src="${cameras.imageUrl}" width="400px"></img>
                     </div>
                     <div class="col-sm-12 col-md-5 col-lg-7">
                         <article class="products-description">
-                            <p><strong>Modele :</strong> ${teddies.name}</p>
+                            <p><strong>Modele :</strong> ${cameras.name}</p>
                             <ul class="dropdown">
-                                <li class=>Colors : ${teddies.colors}</li>
+                                <li class=>Colors : ${cameras.lenses}</li>
                             </ul>
-                            <p><strong>Prix :</strong> ${teddies.price}€</p>
-                            <p><strong>Description : </strong>${teddies.description}</p>
-                            <p><strong>Id : </strong>${teddies._id}</p>
+                            <p><strong>Prix :</strong> ${cameras.price}€</p>
+                            <p><strong>Description : </strong>${cameras.description}</p>
+                            <p id="${cameras._id}"><strong>Id : </strong>${cameras._id}</p>
                             <button class="btn btn-primary" type="submit">Add to Cart</button>
                         </article>
                     </div>
