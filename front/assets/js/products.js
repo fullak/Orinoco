@@ -18,11 +18,13 @@ function getProducts() {
                         <article class="products-description">
                             <p><strong>Modele :</strong> ${cameras.name}</p>
                             <ul class="dropdown">
-                                <li class=>Colors : ${cameras.lenses}</li>
+                                <li class=>Lenses : ${cameras.lenses}</li>
                             </ul>
                             <p><strong>Prix :</strong> ${cameras.price}€</p>
                             <p><strong>Description : </strong>${cameras.description}</p>
                             <p id="${cameras._id}"><strong>Id : </strong>${cameras._id}</p>
+                            <input type="number" id="tentacles" name="tentacles"
+                            min="1" max="10">
                             <button class="btn btn-primary" type="submit">Add to Cart</button>
                         </article>
                     </div>

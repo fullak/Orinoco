@@ -8,7 +8,7 @@ function getProducts() {
             let html = '';
             data.forEach(function (cameras) {
                 html += `
-                <a href="" style="width: 18rem;" id="${cameras._id}" class="card">
+                <a href="/front/pages/products.html" style="width: 18rem;" id="${cameras._id}" class="card">
                     <img class="card-img-top imgProducts" src="${cameras.imageUrl}" alt="Card image cap">
                     <div class="card-body">
                         <h3 class="card-title">${cameras.name}</h3>
@@ -28,7 +28,5 @@ getProducts();
 
 let card = document.getElementsByClassName('card');
 console.log(card);
-card.onclick = function () {
-    alert('cliqué!');
-};
+
 // afficher du contenu en fonction de la 'card' cliqué
