@@ -21,12 +21,3 @@ function getProducts() {
         });
 };
 getProducts();
-
-
-
-// Récupérer une valeur au clic sur l'une des 'card'
-
-let card = document.getElementsByClassName('card');
-console.log(card);
-
-// afficher du contenu en fonction de la 'card' cliqué
