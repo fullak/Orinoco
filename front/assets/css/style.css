@@ -38,6 +38,10 @@ a:link {
     cursor: pointer;
 }
 
+.card {
+    width: 18rem;
+}
+
 a.card {
     text-decoration: none;
     color: black;
