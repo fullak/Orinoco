@@ -1,26 +1,22 @@
-/*const params = new URLSearchParams(window.location.search);
-let getId = params.get("product");
-monStockage = localStorage;
-localStorage.setItem('id', getId);
+// url api
+url;
 
-//comparer getId récupéré avec l'id du tableau
-// si getId === id tableau alors afficher produit
+const params = new URLSearchParams(window.location.search);
+const getId = params.get("id");
 
-// récupérer le tableau depuis API
+const article = document.querySelector("div")
 
 
-function fetchProduct() {
-    fetch(basePath + 'api/cameras/')
-        .then(function (response) {
-            response.json()
-        });
-};
+// Affiche prod
+const displayProduct = async () => {
+    const data = await getACamera(url, getId);
+    productPageCamera(data);
+  };
 
-function foundId() {
-    let displayProduct;
-    if (getId != cameras._id){
-        console.log('no match');
-    }else{
-        console.log('match')
-    }
-};*/
+  // recup une cam
+const getACamera = async (productUrl, productId) => {
+    const response = await fetch(productUrl + productId);
+    return await response.json();
+}
+
+  displayProduct();
