@@ -27,10 +27,7 @@ const displayProducts = async () => {
 };
 
 // Récupérer produits
-const getCameras = async (url) => {
-    const response = await fetch(url);
-    return await response.json();
-};
+getCameras;
 
 // Appeler fonction affichants les produits
 displayProducts();
