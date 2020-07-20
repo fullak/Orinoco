@@ -1,7 +1,7 @@
 const basePath = 'http://localhost:3000/';
 
 // url API
-const url = basePath + "api/cameras";
+const url = basePath + "api/cameras/";
 
 // Récupérer produits
 const getCameras = async (url) => {
@@ -28,7 +28,7 @@ function indexProduct(productName, productId, productImg, productPrice) {
 
 // Affichage produit page product
 const productPageCamera = (productData) => {
-    section.innerHTML = `
+    article.innerHTML = `
       <div class="product">
           <img src="${productData.imageUrl}" alt="${productData.name}">
           <div class="product-information">
