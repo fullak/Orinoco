@@ -1,27 +1,17 @@
-// url api
-url;
+fetchProduct(url, getProductId())
+  .then(function(product) {
+    let domElement = document.querySelector("#product");
+    domElement.innerHTML = displayProduct(product, 'main');
+  })
 
-const params = new URLSearchParams(window.location.search);
+  async function fetchProduct(productUrl, productId) {
+    const response  = await fetch(productUrl + productId);
+    return response.json();
+  }
 
-const getId = params.get("id");
-localStorage.setItem('id', getId);
-
-
-const article = document.querySelector("div")
-
-
-
-// Affiche prod
-const displayProduct = async () => {
-    const data = await getACamera(url, getId);
-    productPageCamera(data);
-  };
-
-  // recup une cam
-  const getACamera = async (productUrl, productId) => {
-    const response = await fetch(productUrl + productId);
-    return await response.json();
-}
-
-
-displayProduct();
+  function getProductId() {
+    const params = new URLSearchParams(window.location.search);
+    return params.get('id');
+  }
+    
+  
