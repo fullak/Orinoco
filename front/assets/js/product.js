@@ -2,9 +2,13 @@
 url;
 
 const params = new URLSearchParams(window.location.search);
+
 const getId = params.get("id");
+localStorage.setItem('id', getId);
+
 
 const article = document.querySelector("div")
+
 
 
 // Affiche prod
@@ -14,9 +18,10 @@ const displayProduct = async () => {
   };
 
   // recup une cam
-const getACamera = async (productUrl, productId) => {
+  const getACamera = async (productUrl, productId) => {
     const response = await fetch(productUrl + productId);
     return await response.json();
 }
 
-  displayProduct();
+
+displayProduct();
