@@ -3,13 +3,15 @@ fetchProduct(url, getProductId()).then(function (product) {
   domElement.innerHTML = displayProduct(product, "main");
 
   // Ecoute au clic utilisateur
-  let addButton = document.querySelector("button");
-  addButton.addEventListener("click", function () {
+  let button = document.querySelector("button");
+  button.addEventListener("click", function () {
     getCartNumbers(product);
-    setCartProductId();
+    totalCost(product);
   });
 });
 
+
+// fonctionne asynchrone, va chercher la liste des produits
 async function fetchProduct(productUrl, productId) {
   const response = await fetch(productUrl + productId);
   return response.json();
@@ -43,14 +45,14 @@ function setCartProductId() {
   localStorage.setItem("cartProductId", getProductId());
 }
 
-
+// ajoute les produits cliqué au localStorage
 function setItems(product) {
 
   let cartItems = localStorage.getItem('productsInCart');
   cartItems = JSON.parse(cartItems);
 
   if (cartItems != null) {
-    
+
     if (cartItems[product._id] == undefined) {
       cartItems = {
         ...cartItems,
@@ -68,4 +70,17 @@ function setItems(product) {
   localStorage.setItem("productsInCart", JSON.stringify(cartItems));
 }
 
+// récupère le prix de chaques items et les addtionnes pour renvoyer le total panier
+function totalCost(product) {
+  let cartCost = localStorage.getItem('totalCost');
+  
 
+  if (cartCost != null) {
+    cartCost = parseInt(cartCost);
+    localStorage.setItem('totalCost', cartCost + product.price);
+  } else {
+    localStorage.setItem('totalCost', product.price);
+  }
+
+  
+}
