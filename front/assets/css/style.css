@@ -111,3 +111,11 @@ a.card {
 .total-item {
     margin-left: 20rem;
 }
+
+.basket-total-container {
+    margin-left: 70%;
+}
+
+.total-price {
+    margin-left: 1rem;
+}

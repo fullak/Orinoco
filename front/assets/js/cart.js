@@ -3,7 +3,7 @@ displayCart();
 function displayCart() {
     let cartItems = localStorage.getItem('productsInCart');
     cartItems = JSON.parse(cartItems);
-    let totalCart = localStorage.getItem('totalCost');
+    let totalCost = localStorage.getItem('totalCost');
     let productContainer = document.querySelector('#cart-list');
     
     
@@ -22,11 +22,11 @@ function displayCart() {
             `;
         }); 
         productContainer.innerHTML += `
-         <div class="basket-total-container>
-            <h4 class="basket-total-title> Panier Total : </h4>
-            <span class="basket-total>${totalCart}</span>
+         <div class="basket-total-container row">
+            <h4 class="basket-total-title"> Panier Total : </h4>
+            <h4 class="total-price">${totalCost / 100},00 €</h4>
         </div>
         `;
-        console.log(totalCart);
+        console.log(typeof totalCost);
     }
 }
