@@ -50,3 +50,27 @@ a.card {
 .brand-logo {
     width: 4rem;
 }
+
+.full-card {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.img-card {
+    display: flex;
+    flex-direction: row;
+    width: 40rem;
+}
+
+.full-card-body {
+    display: flex;
+    flex-direction: column;
+    width: 20rem;
+    margin-left: 5rem;
+}
+
+.btn-primary {
+    width: 10rem;
+    margin: auto;
+}
