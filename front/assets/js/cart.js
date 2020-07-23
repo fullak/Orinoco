@@ -12,13 +12,13 @@ function displayCart() {
         productContainer.innerHTML = '';
         Object.values(cartItems).map(product => {
             productContainer.innerHTML += `
-            <div class="product">
-                <img class="card-img-top imgProducts" src="${product.imageUrl}" alt="Card image cap">
-                <span>${product.name}</span>            
+            <div class="product-list">
+                <img class="cart-img" src="${product.imageUrl}" alt="Card image cap">
+                <span class="name-item">${product.name}</span>        
+                <span class="price-item">${product.price / 100},00 €<span>
+                <span class="quantity-item">${product.inCart}</span>
+                <span class="total-item">${product.inCart * product.price / 100},00 €</span>
             </div>
-            <div class="price">${product.price / 100},00 €<div>
-            <div class="quantity">${product.inCart}</div>
-            <div class="total">${product.inCart * product.price / 100},00 €</div>
             `;
         }); 
         productContainer.innerHTML += `
