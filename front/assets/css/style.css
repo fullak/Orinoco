@@ -109,7 +109,7 @@ a.card {
 }
 
 .total-item {
-    margin-left: 20rem;
+    margin-left: 16rem;
 }
 
 .basket-total-container {
@@ -118,4 +118,20 @@ a.card {
 
 .total-price {
     margin-left: 1rem;
+}
+
+.form {
+    width: 40rem;
+    margin: auto;
+    padding-top: 3rem;
+}
+
+.validate-form,
+.cancel-cart {
+    width: 25rem;
+    margin: auto;
+}
+
+.validate-form {
+    margin-top: 1rem;
 }
