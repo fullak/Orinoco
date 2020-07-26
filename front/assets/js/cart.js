@@ -1,10 +1,10 @@
 displayCart();
 
-
+// boutton annuler ma commande vide le panier
 let clearStorage = document.querySelector('#clear-cart');
-  clearStorage.addEventListener("click", function () {
+clearStorage.addEventListener("click", function () {
     localStorage.clear(clearStorage, location.reload());
-  });
+});
 
 function displayCart() {
     let cartItems = localStorage.getItem('productsInCart');
@@ -62,11 +62,12 @@ function displayCart() {
                 </div>
                 <div class="validate-form">
                     <button type="button" class="btn btn-light btn-form cancel-cart" id="clear-cart">Annuler ma commande</button>
-                    <button type="button" class="btn btn-primary btn-form validate-form" id="validate">Valider</button>
+                    <a href="/front/pages/validate.html">
+                        <button type="button" class="btn btn-primary btn-form validate-form" id="validate">Valider</button>
+                    </a>
                 </div>
             </form>
         </div>
         `;
-        console.log(typeof totalCost);
     }
 }
