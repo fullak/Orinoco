@@ -1,22 +1,23 @@
 fetchProducts().then(function(products) {
     const domElement = document.querySelector("#products");
     let productInStorage = JSON.parse(get('products'));
-    let productInCart = productInStorage.length;
 
-
-    let html = "";  
-    for (let p = 0; p < productInCart; p++) {
+    let html = "";
         
         products.forEach((product) => {
+            productInStorage.forEach((value) => {
+                
+                if (product._id != value) {
+                    return null;
+                }else {
 
-            if (productInStorage != product._id) {
-                return null;
-            }else {
-                html += displayProduct(product, "card");
-            };
+                    html += displayProduct(product, "card");
+                };
+
+            })
             domElement.innerHTML = html; 
       });
-    };
+
 });
 
 // boutton annuler ma commande vide le panier 
