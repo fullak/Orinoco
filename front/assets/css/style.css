@@ -92,7 +92,8 @@ a.card {
 
 .name-item,
 .price-item,
-.quantity-item {
+.quantity-item,
+.fa-times-circle {
     margin-top: 2rem;
 }
 
@@ -106,6 +107,29 @@ a.card {
 }
 
 .form-button {
-    width: 25rem;
+    width: auto;
     margin: auto;
+}
+
+.cancel-button,
+.validate-button {
+    width: 8rem;
+}
+
+.badge {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    padding: 0;
+    background-color: #dd3251;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 18px;
+    display: inline-block;
+    min-width: 10px;
+    color: #fff;
+    vertical-align: middle;
+    white-space: nowrap;
+    text-align: center;
+    border-radius: 10px;
 }

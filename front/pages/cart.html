@@ -13,9 +13,11 @@
       rel="stylesheet"
       href="/front/assets/css/bootstrap-4.5.0/css/bootstrap.css"
     />
+    
     <link rel="stylesheet" href="/front/assets/css/style.css" />
 
     <!-- JS files -->
+    <script src="https://kit.fontawesome.com/ab85ac7e2e.js" crossorigin="anonymous" defer></script>
     <script src="/front/assets/js/utils.js" defer></script>
     <script src="/front/assets/js/cart.js" defer></script>
 
@@ -36,7 +38,7 @@
         <ul class="nav form-inline list-unstyled">
           <li class="nav-link"><a href="/front/index.html">Produits</a></li>
           <li class="nav-link cart">
-            <a href="/front/pages/cart.html">Panier <span>0</span></a>
+            <a href="/front/pages/cart.html"> <i class="fas fa-shopping-cart"></i><span class="badge">0</span></a>
           </li>
         </ul>
       </nav>
@@ -52,7 +54,6 @@
         <div class="row shopping-list" id="products"></div>
         <div class="row total">
           <p>Total : <span id="count-total"></span></p>
-
         </div>
       </section>
 
@@ -92,8 +93,8 @@
                 <input type="" class="form-control" id="exampleInputPassword1" placeholder="">
               </div>
               <div class="row form-button">
-                <button type="submit" class="btn btn-secondary" id="clear-cart">Annuler ma commande</button>
-                <button type="submit" class="btn btn-primary">Valider ma commande</button>
+                <button type="submit" class="btn btn-secondary cancel-button" id="clear-cart">Annuler ma commande</button>
+                <button type="submit" class="btn btn-primary validate-button">Valider ma commande</button>
               </div>
             </div>
           </form>

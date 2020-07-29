@@ -17,6 +17,7 @@ fetchProduct(url, getProductId()).then(function (product) {
 
     products.push(getProductId());
     set('products', products);
+    location.reload();
   })
 });
 
