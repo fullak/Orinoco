@@ -7,8 +7,3 @@ fetchProducts().then(function (products) {
   });
   domElement.innerHTML = html;
 });
-
-async function fetchProducts() {
-  const response = await fetch(url);
-  return await response.json();
-}

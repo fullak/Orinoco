@@ -1,21 +1,58 @@
-displayCart();
+fetchProducts().then(function(products) {
+    const domElement = document.querySelector("#products");
+    let productInStorage = JSON.parse(get('products'));
+    let productInCart = productInStorage.length;
 
-// boutton annuler ma commande vide le panier
-let clearStorage = document.querySelector('#clear-cart');
-clearStorage.addEventListener("click", function () {
-    localStorage.clear(clearStorage, location.reload());
+    let html = "";  
+    for (let p = 0; p < productInCart; p++) {
+        console.log(p);
+        console.log(productInStorage)
+        products.forEach((product) => {
+            if (productInStorage != product._id) {
+                return null;
+            }else {
+                html += displayProduct(product, "card");
+            };
+            domElement.innerHTML = html; 
+      });
+    };
 });
 
+// boutton annuler ma commande vide le panier 
+/*
+let clearStorage = document.querySelector('#clear-cart');
+clearStorage.addEventListener("click", function () {
+    clear();
+    location.reload();
+}); */
+
+function countTotal(products) {
+    return products.reduce((acc, product) => acc += product.price);
+}
+
+
+
+/*
 function displayCart() {
-    let cartItems = localStorage.getItem('productsInCart');
-    cartItems = JSON.parse(cartItems);
-    let totalCost = localStorage.getItem('totalCost');
-    let productContainer = document.querySelector('#cart-list');
     
+    console.log(productId);
+
+*/
+        // requete AJAX
+        // récupérer tous les produits puis les filtrer en fonction de ceux enregistrer dans localStorage
+
+/*
+    let totalCost = countTotal(products);
+    let productContainer = document.querySelector('#cart-list');
+
     if (cartItems && productContainer) {
         productContainer.innerHTML = '';
         Object.values(cartItems).map(product => {
-            productContainer.innerHTML += `
+            productContainer.innerHTML += displayProduct(product, 'cart');
+        }*/
+    /*
+    
+     `
             <div class="product-list">
                 <img class="cart-img" src="${product.imageUrl}" alt="Card image cap">
                 <span class="name-item">${product.name}</span>        
@@ -69,5 +106,4 @@ function displayCart() {
             </form>
         </div>
         `;
-    }
-}
+    }*/
