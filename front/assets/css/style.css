@@ -75,63 +75,37 @@ a.card {
     margin: auto;
 }
 
+.product,
+.price,
+.quantity {
+    text-align: center;
+}
+
 .head-list {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 1rem;
-    border-bottom: #f1e9f0 3px solid;
+    border-bottom: #eac3d7 solid 3px;
+    padding-bottom: 1rem;
 }
 
-.cart-img {
-    width: 10%;
-    margin-bottom: 2rem;
+.card-cart {
+    margin: 1rem 0;
 }
 
-.product-list {
-    margin-bottom: 2rem;
-    border-bottom: #f1e9f0 3px solid;
-}
-
-.product {
-    margin-bottom: 1rem;
-}
-
-.name-item {
-    margin-left: 3rem;
-}
-
-.price-item {
-    margin-left: 8rem;
-}
-
+.name-item,
+.price-item,
 .quantity-item {
-    margin-left: 18rem;
+    margin-top: 2rem;
 }
 
-.total-item {
-    margin-left: 16rem;
+.del-button {
+    height: 2rem;
+    margin-top: 2rem
 }
 
-.basket-total-container {
-    margin-left: 70%;
+.form-container {
+    margin-top: 3rem;
 }
 
-.total-price {
-    margin-left: 1rem;
-}
-
-.form {
-    width: 40rem;
-    margin: auto;
-    padding-top: 3rem;
-}
-
-.validate-form,
-.cancel-cart {
+.form-button {
     width: 25rem;
     margin: auto;
-}
-
-.validate-form {
-    margin-top: 1rem;
 }

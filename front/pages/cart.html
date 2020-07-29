@@ -18,7 +18,7 @@
     <!-- JS files -->
     <script src="/front/assets/js/utils.js" defer></script>
     <script src="/front/assets/js/cart.js" defer></script>
-    
+
     <title>Orinoco - The Online Shop</title>
   </head>
 
@@ -45,12 +45,59 @@
     <main>
       <section class="container products-presentation">
         <div class="row head-list">
-          <div class="product">Produit</div>
-          <div class="price">Prix</div>
-          <div class="quantity">Quantité</div>
-          <div class="total">Total</div>
+          <div class="product col-4">Produit(s)</div>
+          <div class="price col-4">Prix</div>
+          <div class="quantity col-3">Quantité</div>
         </div>
         <div class="row shopping-list" id="products"></div>
+        <div class="row total">
+          <p>Total : <span id="count-total"></span></p>
+
+        </div>
+      </section>
+
+
+      <section class="container form-container">
+        <div class="container">
+          <form class="row">
+            <div class="left col-6">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputName1">Nom</label>
+                <input type="" class="form-control" id="exampleInputPassword1" placeholder="">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputLastName1">Prénom</label>
+                <input type="" class="form-control" id="exampleInputPassword1" placeholder="">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputLastAdress1">Adresse</label>
+                <input type="" class="form-control" id="exampleInputPassword1" placeholder="">
+              </div>
+            </div>
+            <div class="right col-6">
+              <div class="form-group">
+                <label for="exampleInputLastComplementAdresse1">Complément d'adresse</label>
+                <input type="" class="form-control" id="exampleInputPassword1" placeholder="">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputLastCodePostal1">Code postal</label>
+                <input type="" class="form-control" id="exampleInputPassword1" placeholder="">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputVille1">Ville</label>
+                <input type="" class="form-control" id="exampleInputPassword1" placeholder="">
+              </div>
+              <div class="row form-button">
+                <button type="submit" class="btn btn-secondary" id="clear-cart">Annuler ma commande</button>
+                <button type="submit" class="btn btn-primary">Valider ma commande</button>
+              </div>
+            </div>
+          </form>
+        </div>
       </section>
     </main>
 

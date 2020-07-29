@@ -47,7 +47,15 @@ function displayProduct(product, type) {
 
   if (type === "cart") {
     return `
-
+      <div class="container head-list">
+        <div class="row card-cart">
+          <img class="card-img-top cart-img col-2" src="${product.imageUrl}" alt="card image cap">
+          <p class="card-title name-item col-2">${product.name}</p>
+          <p class="card-text price-item col-4">${product.price / 100},00 €</p>
+          <p class="card-text quantity-item col-3">1</p>
+          <button class="del-button col-1" id="delete-product" id-product="${product._id}">Delete</button>
+        </div>
+      </div>
          
     `
   }
@@ -77,4 +85,7 @@ function set (name, value) {
 function clear() {
   localStorage.clear();
 }
+
+
+
 
