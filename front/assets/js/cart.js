@@ -3,11 +3,12 @@ fetchProducts().then(function(products) {
     let productInStorage = JSON.parse(get('products'));
     let productInCart = productInStorage.length;
 
+
     let html = "";  
     for (let p = 0; p < productInCart; p++) {
-        console.log(p);
-        console.log(productInStorage)
+        
         products.forEach((product) => {
+
             if (productInStorage != product._id) {
                 return null;
             }else {
