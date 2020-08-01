@@ -3,12 +3,10 @@ const url = basePath + "api/cameras/";
 
 displayQtyOfProductInCart();
 
-async function fetchProducts() {
-  const response = await fetch(url);
-  return await response.json();
+function clear() {
+  localStorage.clear();
 }
 
-// Affichage produits
 function displayProduct(product, type) {
   if (type === "card") {
     return `
@@ -54,7 +52,24 @@ function displayProduct(product, type) {
           <p class="card-text price-item col-4">${product.price / 100},00 €</p>
           <p class="card-text quantity-item col-3">1</p>
           <a href="#">
-            <i class="far fa-times-circle" id-product="${product._id}"></i>
+            <i class="far fa-times-circle" id-product="${product._id}" id="remove"></i>
+          </a>
+        </div>
+      </div>
+         
+    `
+  }
+
+  if (type === "validate") {
+    return `
+      <div class="container">
+        <div class="row card-body">
+          <div class="message col-12">
+            <h3>Merci pour votre commande #User1 !</h3>
+            <p>Nous mettons tout en oeuvre pour vous livrer au plus vite !</p>
+          </div>
+          <a href="/front/index.html">
+            <button type="submit" class="btn btn-primary back-button" id="go-back">Revenir a l'accueil</button>
           </a>
         </div>
       </div>
@@ -73,6 +88,11 @@ function displayQtyOfProductInCart() {
   }
 }
 
+async function fetchProducts() {
+  const response = await fetch(url);
+  return await response.json();
+}
+
 function get(name) {
   if (localStorage.getItem(name)) {
     return localStorage.getItem(name);
@@ -84,11 +104,3 @@ function get(name) {
 function set (name, value) {
   localStorage.setItem(name, JSON.stringify(value));
 }
-
-function clear() {
-  localStorage.clear();
-}
-
-
-
-
