@@ -47,10 +47,11 @@
 
     <main>
       <section class="container products-presentation">
+        <button class="btn btn-primary clear-cart">Vider le panier <i class="fas fa-trash"></i></button>
         <div class="row head-list">
           <div class="product col-4">Produit(s)</div>
           <div class="price col-4">Prix</div>
-          <div class="quantity col-3">Quantité</div>
+          <div class="quantity col-2">Quantité</div> 
         </div>
         <div class="row shopping-list" id="products"></div>
         <div class="row total">
@@ -94,7 +95,6 @@
                 <input type="" class="form-control" id="exampleInputPassword1" placeholder="">
               </div>
               <div class="row form-button">
-                <button type="submit" class="btn btn-secondary cancel-button" id="clear-cart">Annuler ma commande</button>
                 <button type="submit" formaction="/front/pages/checkout.html" class="btn btn-primary validate-button" id="validate">Valider ma commande</button>
               </div>
             </div>

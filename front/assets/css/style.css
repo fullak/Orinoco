@@ -106,14 +106,14 @@ a.card {
     margin-top: 3rem;
 }
 
-.form-button {
+.validate-button {
     width: auto;
-    margin: auto;
 }
 
-.cancel-button,
-.validate-button {
-    width: 8rem;
+.clear-cart {
+    display: block;
+    margin: auto;
+    margin-bottom: 3rem;
 }
 
 .badge {

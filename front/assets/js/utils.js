@@ -31,7 +31,16 @@ function displayProduct(product, type) {
             </div>
             <div class="container card-body full-card-body">
                 <h3 class="card-title">${product.name}</h3>
-                <p class="card-text">${product.lenses}<p>
+                <div class="btn-group">
+                  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Lenses
+                  </button>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#">${product.lenses[0]}</a>
+                    <a class="dropdown-item" href="#">${product.lenses[1]}</a>
+                    <a class="dropdown-item" href="#">${product.lenses[2]}</a>
+                  </div>
+                </div>
                 <p class="card-text">${product.description}</p>
                 <p class="card-text">${product.price / 100}€</p>
                 <button type="button" class="btn btn-primary add-cart" id="add-to-cart">Add cart</button>

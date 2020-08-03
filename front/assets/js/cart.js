@@ -5,9 +5,10 @@ if (getTotalProductsInCart() == 0) {
     displayEmptyCartNotice();
 }*/
 
-document.querySelector('#clear-cart').addEventListener("click", function () {
+document.querySelector('.clear-cart').addEventListener("click", function () {
     clear();
     displayHeaderQtyOfProductInCart();
+    window.location.reload();
 });
 
 let productInStorage = get('products');
