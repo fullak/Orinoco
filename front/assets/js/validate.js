@@ -8,7 +8,6 @@ function displayValidate(product) {
         domElement.innerHTML = html;
         backToHome();
     }
-
 }
 
 function backToHome() {

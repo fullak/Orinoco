@@ -1,15 +1,14 @@
-fetchProduct(url, getProductId()).then(function (product) {
+fetchAjax(url + getProductId()).then(function (product) {
   let domElement = document.querySelector("#product");
   domElement.innerHTML = displayProduct(product, "main");
+  updateAddToCartButtonStatus(product._id);
 
   // Ecoute au clic utilisateur
   document.getElementById('add-to-cart').addEventListener('click', function() {
     let products = get('products') ?? [];
 
     if (get('products')) {
-      products = JSON.parse(products);
-
-      if (products.includes(getProductId())) {
+      if (cartHasProduct(getProductId())) {
         alert ('Le produit a déjà été ajouté au panier.');
         return;
       }
@@ -17,15 +16,18 @@ fetchProduct(url, getProductId()).then(function (product) {
 
     products.push(getProductId());
     set('products', products);
-    location.reload();
+    displayQtyOfProductInCart()
   })
 });
 
-
-// fonctionne asynchrone, va chercher la liste des produits
-async function fetchProduct(productUrl, productId) {
-  const response = await fetch(productUrl + productId);
-  return response.json();
+function updateAddToCartButtonStatus(productId) {
+  if (cartHasProduct(productId)) {
+    console.log('le produit est deja dans le panier');
+    //BTN disabled
+    return;
+  }
+  //BTN enabled
+  console.log("le produit n'est pas dans le panier");
 }
 
 function getProductId() {

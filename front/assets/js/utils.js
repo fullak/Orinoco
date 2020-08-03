@@ -3,10 +3,6 @@ const url = basePath + "api/cameras/";
 
 displayQtyOfProductInCart();
 
-function clear() {
-  localStorage.clear();
-}
-
 function displayProduct(product, type) {
   if (type === "card") {
     return `
@@ -79,28 +75,37 @@ function displayProduct(product, type) {
 }
 
 function displayQtyOfProductInCart() {
-  let productNumbers = get('products');
-  productNumbers = JSON.parse(productNumbers).length;
-
-  if (productNumbers > 0) {
-    document.querySelector('.cart span').textContent = productNumbers;
-
-  }
+  document.querySelector('.cart span').textContent = getTotalProductsInCart();
 }
 
-async function fetchProducts() {
+function getTotalProductsInCart() {
+  let total = 0;
+
+  if (has('products')) {
+    total = get('products').length;
+  }
+
+  return total;
+}
+
+async function fetchAjax(url) {
   const response = await fetch(url);
   return await response.json();
 }
 
-function get(name) {
-  if (localStorage.getItem(name)) {
-    return localStorage.getItem(name);
-  }
+function getProductId() {
+  const params = new URLSearchParams(window.location.search);
 
+  if (params) {
+    return params.get('id');
+  }
   return null;
 }
 
-function set (name, value) {
-  localStorage.setItem(name, JSON.stringify(value));
+function cartHasProduct(productId) {
+  let products = get('products');
+  if (products) {
+    return (products.includes(productId));
+  } 
 }
+

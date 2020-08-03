@@ -1,4 +1,4 @@
-fetchProducts().then(function (products) {
+fetchAjax(url).then(function (products) {
   const domElement = document.querySelector("#products");
 
   let html = "";
