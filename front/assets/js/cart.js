@@ -29,7 +29,6 @@ fetchAjax(url).then(function(products) {
 
             })
             domElement.innerHTML = html;
-
         })  
 
 });

@@ -74,8 +74,8 @@ function displayProduct(product, type) {
             <h3>Merci pour votre commande #User1 !</h3>
             <p>Nous mettons tout en oeuvre pour vous livrer au plus vite !</p>
           </div>
-          <a href="/front/index.html">
-            <button type="submit" class="btn btn-primary back-button" id="go-back">Revenir a l'accueil</button>
+          <a class="back-button" href="/front/index.html">
+            <button type="submit" class="btn btn-primary" id="go-back">Revenir a l'accueil</button>
           </a>
         </div>
       </div>

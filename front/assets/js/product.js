@@ -27,7 +27,7 @@ function updateAddToCartButtonStatus(productId) {
     return;
     
   }
-  
+
   $(".inCart").hide();
 }
 

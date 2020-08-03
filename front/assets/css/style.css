@@ -138,3 +138,8 @@ a.card {
     text-align: center;
     margin-bottom: 2rem;
 }
+
+.back-button {
+    display: block;
+    margin: auto;
+}
