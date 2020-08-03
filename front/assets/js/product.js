@@ -9,7 +9,8 @@ fetchAjax(url + getProductId()).then(function (product) {
 
     if (get('products')) {
       if (cartHasProduct(getProductId())) {
-        alert ('Le produit a déjà été ajouté au panier.');
+        
+        window.location.reload();
         return;
       }
     }
@@ -22,12 +23,12 @@ fetchAjax(url + getProductId()).then(function (product) {
 
 function updateAddToCartButtonStatus(productId) {
   if (cartHasProduct(productId)) {
-    console.log('le produit est deja dans le panier');
-    //BTN disabled
+    $(".add-cart").hide();
     return;
+    
   }
-  //BTN enabled
-  console.log("le produit n'est pas dans le panier");
+  
+  $(".inCart").hide();
 }
 
 function getProductId() {
