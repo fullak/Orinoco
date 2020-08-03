@@ -7,7 +7,7 @@ if (getTotalProductsInCart() == 0) {
 
 document.querySelector('#clear-cart').addEventListener("click", function () {
     clear();
-    displayQtyOfProductInCart();
+    displayHeaderQtyOfProductInCart();
 });
 
 let productInStorage = get('products');

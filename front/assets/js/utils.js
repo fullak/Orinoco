@@ -1,7 +1,7 @@
 const basePath = "http://localhost:3000/";
 const url = basePath + "api/cameras/";
 
-displayQtyOfProductInCart();
+displayHeaderQtyOfProductInCart();
 
 function displayProduct(product, type) {
   if (type === "card") {
@@ -74,7 +74,7 @@ function displayProduct(product, type) {
   }
 }
 
-function displayQtyOfProductInCart() {
+function displayHeaderQtyOfProductInCart() {
   document.querySelector('.cart span').textContent = getTotalProductsInCart();
 }
 

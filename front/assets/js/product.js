@@ -16,7 +16,7 @@ fetchAjax(url + getProductId()).then(function (product) {
 
     products.push(getProductId());
     set('products', products);
-    displayQtyOfProductInCart()
+    displayHeaderQtyOfProductInCart()
   })
 });
 
