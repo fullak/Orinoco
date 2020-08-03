@@ -1,6 +1,6 @@
-displayValidate();
+displayCheckout();
 
-function displayValidate(product) {
+function displayCheckout(product) {
     const domElement = document.querySelector("#validate");
     let html = "";
     if (localStorage.length >= 1){
