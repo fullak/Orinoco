@@ -142,4 +142,10 @@ a.card {
 .back-button {
     display: block;
     margin: auto;
+    margin-top: 2rem;
+}
+
+.empty-cart {
+    text-align: center;
+    display: none;
 }

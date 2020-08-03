@@ -1,9 +1,9 @@
 /*Si le panier est vide => 
-
+*/
 if (getTotalProductsInCart() == 0) {
-    hideForm();
+    hideValidationOrder();
     displayEmptyCartNotice();
-}*/
+}
 
 document.querySelector('.clear-cart').addEventListener("click", function () {
     clear();
@@ -17,9 +17,8 @@ fetchAjax(url).then(function(products) {
     const domElement = document.querySelector("#products");
     let html = "";
 
-        products.forEach((product) => {
-            productInStorage.forEach((value) => {
-                
+        productInStorage.forEach((value) => {
+            products.forEach((product) => {
                 if (product._id != value) {
                     return null;
                 }
@@ -33,3 +32,11 @@ fetchAjax(url).then(function(products) {
 
 });
 
+function hideValidationOrder() {
+    $(".hide-form").hide();
+    $(".products-presentation").hide();
+}
+
+function displayEmptyCartNotice() {
+    $(".empty-cart").show();
+}
