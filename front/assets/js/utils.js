@@ -57,9 +57,6 @@ function displayProduct(product, type) {
           <p class="card-title name-item col-2">${product.name}</p>
           <p class="card-text price-item col-4">${product.price / 100},00 €</p>
           <p class="card-text quantity-item col-3">1</p>
-          <a href="#">
-            <i class="far fa-times-circle" id-product="${product._id}" id="remove"></i>
-          </a>
         </div>
       </div>
          
@@ -71,7 +68,7 @@ function displayProduct(product, type) {
       <div class="container">
         <div class="row card-body">
           <div class="message col-12">
-            <h3>Merci pour votre commande #User1 !</h3>
+            <h3>Merci pour votre commande User, votre numero de commande est le : 123456 !</h3>
             <p>Nous mettons tout en oeuvre pour vous livrer au plus vite !</p>
           </div>
           <a class="back-button" href="/front/index.html">
