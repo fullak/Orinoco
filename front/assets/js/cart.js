@@ -9,7 +9,15 @@ document.querySelector('.clear-cart').addEventListener("click", function () {
     window.location.reload();
 });
 
-let productInStorage = get('products');
+let form = document.querySelector('#checkout-form');
+const products = JSON.parse(localStorage.getItem("products"));
+let userCheckout = {
+    contact: {},
+    products
+  };
+
+const productInStorage = get('products');
+
 
 fetchAjax(url).then(function(products) {
     const domElement = document.querySelector("#products");
@@ -39,39 +47,24 @@ function hideValidationOrder() {
     $(".products-presentation").hide();
 }
 
-const firstName = document.querySelector('#firstName');
-const lastName = document.querySelector('#lastName');
-const address = document.querySelector('#address');
-const city = document.querySelector('#city');
-const email = document.querySelector('#email');
-
-
-let contact = {
-    firtName: firstName.value,
-    lastName: lastName.value,
-    address: address.value,
-    city: city.value,
-    email: email.value,
-}
-
-var xhr = new XMLHttpRequest();
-xhr.open("POST", 'http://localhost:3000/', true);
-
-const postData = async (method, url, dataElt) => {
-    const response = await fetch(url, {
-      method,
-      body: JSON.stringify(dataElt),
-    });
-    return await response.json();
-  };
-
-document.querySelector('#validate').addEventListener('click', async(e) => {
+form.querySelector('#validate').addEventListener('click', async(e) => {
     e.preventDefault();
-    const response = await postData(
+
+    userCheckout.contact = {
+        firstName: firstName.value,
+        lastName: lastName.value,
+        address: address.value,
+        city: city.value,
+        email: email.value,
+    }
+
+    let response = await postData(
         "POST",
         "http://localhost:3000/api/cameras/order",
-        contact
+        userCheckout
       ); // Envoie données au serveur
-      window.location = `./checkout.html?id=${response.order_id}&user=${firstName.value}`; // Redirige vers la page de confirmation de commande
-      //localStorage.removeItem("panier");
-})
+      window.location = `./checkout.html?id=${response.orderId}&user=${firstName.value}`; // Redirige vers la page de confirmation de commande
+    })
+
+
+

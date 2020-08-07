@@ -1,5 +1,6 @@
 const basePath = "http://localhost:3000/";
 const url = basePath + "api/cameras/";
+const orderUrl = url +"order";
 
 displayHeaderQtyOfProductInCart();
 
@@ -67,10 +68,14 @@ function displayProduct(product, type) {
     return `
       <div class="container">
         <div class="row card-body">
-          <div class="message col-12">
-            <h3>Merci pour votre commande User, votre numero de commande est le : 123456 !</h3>
-            <p>Nous mettons tout en oeuvre pour vous livrer au plus vite !</p>
-          </div>
+        <article id="confirmation" class="col-12">
+        <h3>Commande validée</h3>
+        <p class="user">Merci pour votre commande</p>
+        <p class="order-id">Votre numéro de commande est le</p>
+        <p class="total-price">
+          Montant total : <span class="price"></span>
+        </p>
+      </article>
           <a class="back-button" href="/front/index.html">
             <button type="submit" class="btn btn-primary" id="go-back">Revenir a l'accueil</button>
           </a>
@@ -116,3 +121,13 @@ function cartHasProduct(productId) {
   } 
 }
 
+const postData = async (method, url, dataElt) => {
+  const response = await fetch(url, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+    method,
+    body: JSON.stringify(dataElt),
+  });
+  return await response.json();
+};
