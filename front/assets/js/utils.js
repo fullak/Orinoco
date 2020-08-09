@@ -8,7 +8,7 @@ function displayProduct(product, type) {
   if (type === "card") {
     return `
         <div class="a-card">
-        <a href="/front/pages/product.html?id=${product._id}" id="${
+        <a href="/front/pages/product.html?id=${product._id}&price=${product.price}" id="${
       product._id
     }" class="card">
         <img class="card-img-top imgProducts" src="${
@@ -44,7 +44,9 @@ function displayProduct(product, type) {
                 </div>
                 <p class="card-text">${product.description}</p>
                 <p class="card-text">${product.price / 100}€</p>
-                <button type="button" class="btn btn-primary add-cart" id="add-to-cart">Add cart</button>
+                
+                  <button type="button" class="btn btn-primary add-cart" id="add-to-cart">Add cart</button>
+
                 <button type="button" class="btn btn-secondary inCart" disabled="disabled" id="add-to-cart">Deja dans le panier</button>
             </div>
         </div>`;
@@ -106,15 +108,6 @@ function getTotalProductsInCart() {
 async function fetchAjax(url) {
   const response = await fetch(url);
   return await response.json();
-}
-
-function getProductId() {
-  const params = new URLSearchParams(window.location.search);
-
-  if (params) {
-    return params.get('id');
-  }
-  return null;
 }
 
 function cartHasProduct(productId) {
