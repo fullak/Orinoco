@@ -22,6 +22,7 @@ fetchAjax(url + getProductId()).then(function (product) {
 });
 
 function updateAddToCartButtonStatus(productId) {
+
   if (cartHasProduct(productId)) {
     $(".add-cart").hide();
     return;

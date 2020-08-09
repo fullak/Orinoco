@@ -58,6 +58,9 @@ function displayProduct(product, type) {
           <p class="card-title name-item col-2">${product.name}</p>
           <p class="card-text price-item col-4">${product.price / 100},00 €</p>
           <p class="card-text quantity-item col-3">1</p>
+          <a href="#">
+            <i class="far fa-times-circle" id-product="${product._id}" id="removeElt"></i>
+          </a>
         </div>
       </div>
          
@@ -121,13 +124,3 @@ function cartHasProduct(productId) {
   } 
 }
 
-const postData = async (method, url, dataElt) => {
-  const response = await fetch(url, {
-    headers: {
-      "Content-Type": "application/json",
-    },
-    method,
-    body: JSON.stringify(dataElt),
-  });
-  return await response.json();
-};

@@ -75,19 +75,19 @@
             <div class="left col-6">
               <div class="form-group">
                 <label>Email address</label>
-                <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Adresse mail" required>
+                <input type="email" pattern="[^@\s]+@[^@\s]+\.[^@\s]+" class="form-control email" id="email" aria-describedby="emailHelp" placeholder="Adresse mail" required>
               </div>
               <div class="form-group">
                 <label for="firstName">Nom</label>
-                <input type="text" class="form-control" id="firstName" placeholder="" input="" required>
+                <input type="text" class="form-control firstName" id="firstName" placeholder="" input="" required>
               </div>
               <div class="form-group">
                 <label for="lastName">Prénom</label>
-                <input type="text" class="form-control" id="lastName" placeholder="" required>
+                <input type="text" class="form-control lastName" id="lastName" placeholder="" required>
               </div>
               <div class="form-group">
                 <label for="address">Adresse</label>
-                <input type="text" class="form-control" id="address" placeholder="" required>
+                <input type="text" class="form-control address" id="address" placeholder="" required>
               </div>
             </div>
             <div class="right col-6">
@@ -101,10 +101,11 @@
               </div>
               <div class="form-group">
                 <label for="city">Ville</label>
-                <input type="text" class="form-control" id="city" placeholder="" required>
+                <input type="text" class="form-control city" id="city" placeholder="" required>
               </div>
               <div class="row form-button">
-                <button type="submit" formaction="/front/pages/checkout.html" class="btn btn-primary validate-button validate" id="validate">Valider ma commande</button>
+                <button type="submit" class="btn btn-primary validate-button validate" id="validate">Valider ma commande</button>
+                <button type="submit" class="btn btn-danger notValide">Veuillez remplir le formulaire</button>
               </div>
             </div>
           </form>

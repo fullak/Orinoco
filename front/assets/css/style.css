@@ -106,8 +106,10 @@ a.card {
     margin-top: 3rem;
 }
 
-.validate-button {
+.validate-button,
+.notValide {
     width: auto;
+    margin: auto;
 }
 
 .clear-cart {
