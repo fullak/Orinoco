@@ -149,5 +149,12 @@ a.card {
 
 .empty-cart {
     text-align: center;
+}
+
+#formDisabled {
+    display: block;
+}
+
+#messageEnabled {
     display: none;
 }

@@ -25,9 +25,9 @@ function displayProducts(products) {
 } 
 
 function updatePageStatus() {
-  if (getTotalProductsInCart() == 0) {
-    hideValidationOrder();
+  if (getTotalProductsInCart() <= 0) {
     displayEmptyCartNotice();
+    disableValidationOrder();
   }
 }
 
@@ -97,4 +97,12 @@ function isLastNameValid() {
   }
 
   return false;
+}
+
+function disableValidationOrder() {
+  document.getElementById('formDisabled').style.display = 'none';
+}
+
+function displayEmptyCartNotice() {
+  document.getElementById('messageEnabled').style.display = "block";
 }
