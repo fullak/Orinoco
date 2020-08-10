@@ -9,7 +9,6 @@ if (has('products')) {
   }); 
 }
 
-
 function displayProducts(products) {
   let html = '';
 
@@ -18,7 +17,7 @@ function displayProducts(products) {
       if (product._id != productId) {
         return null;
       } else {
-        html += displayProduct(product, "cart");
+        html += renderProduct(product, "cart");
       }
     });
   });

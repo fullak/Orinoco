@@ -4,7 +4,7 @@ const orderUrl = url +"order";
 
 displayHeaderQtyOfProductInCart();
 
-function displayProduct(product, type) {
+function renderProduct(product, type) {
   if (type === "card") {
     return `
         <div class="a-card">

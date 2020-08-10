@@ -1,6 +1,6 @@
 fetchAjax(url + getProductId()).then(function (product) {
   let domElement = document.querySelector("#product");
-  domElement.innerHTML = displayProduct(product, "main");
+  domElement.innerHTML = renderProduct(product, "main");
   updateAddToCartButtonStatus(product._id);
 
   // Ecoute au clic utilisateur

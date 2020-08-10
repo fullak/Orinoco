@@ -10,7 +10,7 @@ function displayCheckout(product) {
     const domElement = document.querySelector("#validate");
     let html = "";
     if (localStorage.length >= 1){
-        html += displayProduct(product, "validate");
+        html += renderProduct(product, "validate");
         domElement.innerHTML = html;
         backToHome();
     }

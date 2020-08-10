@@ -3,7 +3,7 @@ fetchAjax(url).then(function (products) {
 
   let html = "";
   products.forEach((product) => {
-    html += displayProduct(product, "card");
+    html += renderProduct(product, "card");
   });
   domElement.innerHTML = html;
 });
