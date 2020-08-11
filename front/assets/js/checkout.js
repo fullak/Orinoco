@@ -7,6 +7,13 @@ const userName = orderInformation[1].replace("user=", "");
 document.querySelector(".user").textContent += " " + userName + " !";
 document.querySelector(".order-id").textContent += " " + orderId + ".";
 
+function backToHome() {
+  let back = document.getElementById('go-back');
+  back.addEventListener('click', function(){
+      clear();
+  })
+};
+
 function displayCheckout() {
     const domElement = document.querySelector("#checkout");
     let html = `
@@ -30,9 +37,3 @@ function displayCheckout() {
   backToHome();
 }
 
-function backToHome() {
-    let back = document.getElementById('go-back');
-    back.addEventListener('click', function(){
-        clear();
-    })
-};

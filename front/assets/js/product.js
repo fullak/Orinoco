@@ -23,24 +23,24 @@ fetchAjax(url + getProductId()).then(function (product) {
   });
 });
 
+function disableSubmitButton() {
+  document.getElementById("inCart").style.display = "none";
+  document.getElementById("add-to-cart").style.display = "block";
+}
+
+function enableSubmitButton() {
+  document.getElementById("inCart").style.display = "block";
+  document.getElementById("add-to-cart").style.display = "none";
+}
+
 function getProductId() {
   const params = new URLSearchParams(window.location.search);
   return params.get("id");
 }
 
-// recupere l'id produit
-function setCartProductId() {
-  localStorage.setItem("cartProductId", getProductId());
-}
-
 function getProductPrice() {
   const params = new URLSearchParams(window.location.search);
   return params.get("price");
-}
-
-// recupere le prix produit
-function setCartProductPrice() {
-  localStorage.setItem("cartProductPrice", getProductPrice());
 }
 
 function listenForChange() {
@@ -53,12 +53,18 @@ function listenForChange() {
   });
 }
 
-function enableSubmitButton() {
-  document.getElementById("inCart").style.display = "block";
-  document.getElementById("add-to-cart").style.display = "none";
+// recupere l'id produit
+function setCartProductId() {
+  localStorage.setItem("cartProductId", getProductId());
 }
 
-function disableSubmitButton() {
-  document.getElementById("inCart").style.display = "none";
-  document.getElementById("add-to-cart").style.display = "block";
+// recupere le prix produit
+function setCartProductPrice() {
+  localStorage.setItem("cartProductPrice", getProductPrice());
 }
+
+
+
+
+
+
