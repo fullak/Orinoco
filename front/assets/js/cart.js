@@ -1,18 +1,23 @@
 updatePageStatus();
-listenForCartCleanup();
-listenForChange();
 
-if (has('products')) {
+if (has("products")) {
   fetchAjax(url).then(function (products) {
     displayProducts(products);
     listenForSubmission();
-  }); 
+    listenForCartCleanup();
+    sumProductsPrice();
+    listenForChange();
+  });
+}
+
+function displayEmptyCartNotice() {
+  document.getElementById("messageEnabled").style.display = "block";
 }
 
 function displayProducts(products) {
-  let html = '';
+  let html = "";
 
-  get('products').forEach((productId) => {
+  get("products").forEach((productId) => {
     products.forEach((product) => {
       if (product._id != productId) {
         return null;
@@ -21,14 +26,92 @@ function displayProducts(products) {
       }
     });
   });
-  document.querySelector('#products').innerHTML = html;
-} 
+  document.querySelector("#products").innerHTML = html;
+}
 
-function updatePageStatus() {
-  if (getTotalProductsInCart() <= 0) {
-    displayEmptyCartNotice();
-    disableValidationOrder();
+function disableSubmitButton() {
+  document.getElementById("formIsUnvalide").style.display = "block";
+  document.getElementById("validate").style.display = "none";
+}
+
+function disableValidationOrder() {
+  document.getElementById("formDisabled").style.display = "none";
+}
+
+function enableSubmitButton() {
+  document.getElementById("validate").style.display = "block";
+  document.getElementById("formIsUnvalide").style.display = "none";
+}
+
+function isAddressValid() {
+  let address = document.getElementById("address").value;
+
+  if (address.length > 5) {
+    return true;
   }
+
+  return false;
+}
+
+function isCityValid() {
+  let city = document.getElementById("city").value;
+
+  if (city.length > 2) {
+    return true;
+  }
+
+  return false;
+}
+
+function isEmailValid() {
+  let email = document.getElementById("email").value;
+
+  if (email.length > 4 && email.length < 320) {
+    return true;
+  }
+
+  return false;
+}
+
+function isFirstNameValid() {
+  let firstName = document.getElementById("firstName").value;
+
+  if (firstName.length > 3) {
+    return true;
+  }
+
+  return false;
+}
+
+function isFormValid() {
+  return (
+    isFirstNameValid() &&
+    isLastNameValid() &&
+    isEmailValid() &&
+    isAddressValid() &&
+    isPostcodeValid() &&
+    isCityValid()
+  );
+}
+
+function isLastNameValid() {
+  let lastName = document.getElementById("lastName").value;
+
+  if (lastName.length > 2 && lastName.length < 200) {
+    return true;
+  }
+
+  return false;
+}
+
+function isPostcodeValid() {
+  let postcode = document.getElementById("code-postal").value;
+
+  if (postcode.length === 5) {
+    return true;
+  }
+
+  return false;
 }
 
 function listenForCartCleanup() {
@@ -40,69 +123,47 @@ function listenForCartCleanup() {
 }
 
 function listenForChange() {
-  document.getElementById('checkout-form').addEventListener('change', function (){
-    if (formIsValid()) {
-      enableSubmitButton();
-    }else {
-      disableSubmitButton();
-    }
-  });
+  document
+    .getElementById("checkout-form")
+    .addEventListener("change", function () {
+      if (isFormValid()) {
+        enableSubmitButton();
+      } else {
+        disableSubmitButton();
+      }
+    });
 }
 
 function listenForSubmission() {
-  document.getElementById("validate").addEventListener("click", function() {
-    let payload = {
-    contact: {
-      firstName: document.getElementById('firstName').value,
-      lastName: document.getElementById('lastName').value,
-      address: document.getElementById('address').value,
-      city: document.getElementById('city').value,
-      email: document.getElementById('email').value,
-    },
-    products: get('products')
-  };
+  document.querySelector("#validate").addEventListener("click", async (e) => {
+    e.preventDefault();
 
-  fetch("http://localhost:3000/api/cameras/order", {
+    let payload = {
+      contact: {
+        firstName: document.getElementById("firstName").value,
+        lastName: document.getElementById("lastName").value,
+        address: document.getElementById("address").value,
+        city: document.getElementById("city").value,
+        email: document.getElementById("email").value,
+      },
+      products: get("products"),
+    };
+
+    fetch(url + "order", {
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      method: "POST",
       body: JSON.stringify(payload),
-    }).then(response => {
-      console.log(response)
+    }).then((response) => {
       window.location = `./checkout.html?id=${response.orderId}&user=${firstName.value}`; // Redirige vers la page de confirmation de commande
-    })
+    });
   });
 }
 
-function isFormValid() {
-  return (isFirstNameValid() && isLastNameValid());
-}
-
-function isFirstNameValid() {
-  let firstName = document.getElementById('firstName').value;
-
-  if (firstName.length > 3) {
-    return true;
+function updatePageStatus() {
+  if (getTotalProductsInCart() <= 0) {
+    displayEmptyCartNotice();
+    disableValidationOrder();
   }
-
-  return false;
-}
-
-function isLastNameValid() {
-  let lastName = document.getElementById('lastName').value;
-
-  if (lastName.length > 2 && lastName.length < 200) {
-    return true;
-  }
-
-  return false;
-}
-
-function disableValidationOrder() {
-  document.getElementById('formDisabled').style.display = 'none';
-}
-
-function displayEmptyCartNotice() {
-  document.getElementById('messageEnabled').style.display = "block";
 }

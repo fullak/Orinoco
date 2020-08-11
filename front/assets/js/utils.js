@@ -1,6 +1,5 @@
 const basePath = "http://localhost:3000/";
 const url = basePath + "api/cameras/";
-const orderUrl = url +"order";
 
 displayHeaderQtyOfProductInCart();
 
@@ -25,12 +24,12 @@ function renderProduct(product, type) {
   if (type === "main") {
     return `
         <div class="container full-card">
-            <div class="row img-card">
-                <img class="card-img-top" src="${
+            <div class="row img-card col-6">
+                <img class="card-img-top productImg" src="${
                   product.imageUrl
                 }" alt="Card image cap">
             </div>
-            <div class="container card-body full-card-body">
+            <div class="container card-body full-card-body col-4">
                 <h3 class="card-title">${product.name}</h3>
                 <div class="btn-group">
                   <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -44,10 +43,7 @@ function renderProduct(product, type) {
                 </div>
                 <p class="card-text">${product.description}</p>
                 <p class="card-text">${product.price / 100}€</p>
-                
-                  <button type="button" class="btn btn-primary add-cart" id="add-to-cart">Add cart</button>
 
-                <button type="button" class="btn btn-secondary inCart" disabled="disabled" id="add-to-cart">Deja dans le panier</button>
             </div>
         </div>`;
   }
@@ -60,46 +56,23 @@ function renderProduct(product, type) {
           <p class="card-title name-item col-2">${product.name}</p>
           <p class="card-text price-item col-4">${product.price / 100},00 €</p>
           <p class="card-text quantity-item col-3">1</p>
-          <a href="#">
-            <i class="far fa-times-circle" id-product="${product._id}" id="removeElt"></i>
-          </a>
         </div>
       </div>
          
-    `
-  }
-
-  if (type === "validate") {
-    return `
-      <div class="container">
-        <div class="row card-body">
-        <article id="confirmation" class="col-12">
-        <h3>Commande validée</h3>
-        <p class="user">Merci pour votre commande</p>
-        <p class="order-id">Votre numéro de commande est le</p>
-        <p class="total-price">
-          Montant total : <span class="price"></span>
-        </p>
-      </article>
-          <a class="back-button" href="/front/index.html">
-            <button type="submit" class="btn btn-primary" id="go-back">Revenir a l'accueil</button>
-          </a>
-        </div>
-      </div>
-         
-    `
+    `;
   }
 }
 
+
 function displayHeaderQtyOfProductInCart() {
-  document.querySelector('.cart span').textContent = getTotalProductsInCart();
+  document.querySelector(".cart span").textContent = getTotalProductsInCart();
 }
 
 function getTotalProductsInCart() {
   let total = 0;
 
-  if (has('products')) {
-    total = get('products').length;
+  if (has("products")) {
+    total = get("products").length;
   }
 
   return total;
@@ -111,9 +84,14 @@ async function fetchAjax(url) {
 }
 
 function cartHasProduct(productId) {
-  let products = get('products');
+  let products = get("products");
   if (products) {
-    return (products.includes(productId));
-  } 
+    return products.includes(productId);
+  }
 }
 
+function sumProductsPrice() {
+  let totalCartPrice = sum(JSON.parse(localStorage.price));
+  document.getElementById("count-total").innerHTML =
+  sumTotalCartPrice = totalCartPrice / 100 + ",OO €";
+}

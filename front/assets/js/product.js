@@ -1,7 +1,7 @@
 fetchAjax(url + getProductId()).then(function (product) {
   let domElement = document.querySelector("#product");
   domElement.innerHTML = renderProduct(product, "main");
-  updateAddToCartButtonStatus(product._id);
+  listenForChange();
 
   // Ecoute au clic utilisateur
   document.getElementById("add-to-cart").addEventListener("click", function () {
@@ -23,15 +23,6 @@ fetchAjax(url + getProductId()).then(function (product) {
   });
 });
 
-function updateAddToCartButtonStatus(productId) {
-  if (cartHasProduct(productId)) {
-    $(".add-cart").hide();
-    return;
-  }
-
-  $(".inCart").hide();
-}
-
 function getProductId() {
   const params = new URLSearchParams(window.location.search);
   return params.get("id");
@@ -50,4 +41,24 @@ function getProductPrice() {
 // recupere le prix produit
 function setCartProductPrice() {
   localStorage.setItem("cartProductPrice", getProductPrice());
+}
+
+function listenForChange() {
+  document.getElementById("add-to-cart").addEventListener("click", function () {
+    if (localStorage.products > 0) {
+      disableSubmitButton();
+    } else {
+      enableSubmitButton();
+    }
+  });
+}
+
+function enableSubmitButton() {
+  document.getElementById("inCart").style.display = "block";
+  document.getElementById("add-to-cart").style.display = "none";
+}
+
+function disableSubmitButton() {
+  document.getElementById("inCart").style.display = "none";
+  document.getElementById("add-to-cart").style.display = "block";
 }
