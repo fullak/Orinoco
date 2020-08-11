@@ -1,5 +1,4 @@
 displayCheckout();
-sumProductsPrice();
 
 const orderInformation = window.location.search.substr(1).split("&");
 const orderId = orderInformation[0].replace("id=", "");
@@ -34,6 +33,11 @@ function displayCheckout() {
     </div>   
   `;
   domElement.innerHTML = html;
+  disabledNavigationButtons()
+  sumProductsPrice();
   backToHome();
 }
 
+function disabledNavigationButtons(){
+  document.getElementById("disableNav").style.display = "none";
+}

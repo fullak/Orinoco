@@ -15,6 +15,10 @@
   font-family: "Belligerent-Madness";
 }
 
+.title-font {
+  margin: auto;
+}
+
 .cameras,
 .card-title,
 .card-text {
