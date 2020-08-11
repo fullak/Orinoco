@@ -56,7 +56,18 @@ a.card {
 .full-card {
   display: flex;
   flex-direction: row;
-  width: 100%;
+  width: auto;
+  height: auto;
+}
+
+.card-text {
+  margin-top: 1rem;
+}
+
+.productImg {
+  width: auto;
+  height: 100%;
+  display:block;
 }
 
 .img-card {
@@ -193,4 +204,9 @@ input:valid {
 
 .confirmationMessage {
   text-align: center;
+}
+
+.validation-btn {
+  display: flex;
+  justify-content: center;
 }

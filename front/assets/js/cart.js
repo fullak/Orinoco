@@ -1,3 +1,14 @@
+const postData = async (method, url, dataElt) => {
+  const response = await fetch(url, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+    method,
+    body: JSON.stringify(dataElt),
+  });
+  return await response.json();
+};
+
 updatePageStatus();
 
 if (has("products")) {
@@ -149,16 +160,13 @@ function listenForSubmission() {
       products: get("products"),
     };
 
-    fetch(url + "order", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(payload),
-    }).then((response) => {
+    let response = await postData(
+      "POST",
+      "http://localhost:3000/api/cameras/order",
+      payload
+    );
       window.location = `./checkout.html?id=${response.orderId}&user=${firstName.value}`; // Redirige vers la page de confirmation de commande
     });
-  });
 }
 
 function updatePageStatus() {

@@ -55,7 +55,7 @@ function renderProduct(product, type) {
                   product.imageUrl
                 }" alt="Card image cap">
             </div>
-            <div class="container card-body full-card-body col-4">
+            <div class="container card-body full-card-body col-6">
                 <h3 class="card-title">${product.name}</h3>
                 <div class="btn-group">
                   <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
