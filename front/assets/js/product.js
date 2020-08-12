@@ -1,3 +1,4 @@
+//Récupère la liste des produits et affiche celui indiqué dans l'ID
 fetchAjax(url + getProductId()).then(function (product) {
   let domElement = document.querySelector("#product");
   domElement.innerHTML = renderProduct(product, "main");
@@ -23,32 +24,37 @@ fetchAjax(url + getProductId()).then(function (product) {
   });
 });
 
-function disableSubmitButton() {
+//Désactive le bouton ajouter au panier
+function disableAddToCartButton() {
   document.getElementById("inCart").style.display = "none";
   document.getElementById("add-to-cart").style.display = "block";
 }
 
-function enableSubmitButton() {
+//Active le bouton ajouter au panier
+function enableAddToCartButton() {
   document.getElementById("inCart").style.display = "block";
   document.getElementById("add-to-cart").style.display = "none";
 }
 
+//Récupere l'id du produit 
 function getProductId() {
   const params = new URLSearchParams(window.location.search);
   return params.get("id");
 }
 
+//Récupère le prix du produit
 function getProductPrice() {
   const params = new URLSearchParams(window.location.search);
   return params.get("price");
 }
 
+//Change l'affichage du bouton d'ajout au panier si le produit y est deja
 function listenForChange() {
   document.getElementById("add-to-cart").addEventListener("click", function () {
     if (localStorage.products > 0) {
-      disableSubmitButton();
+      disableAddToCartButton();
     } else {
-      enableSubmitButton();
+      enableAddToCartButton();
     }
   });
 }

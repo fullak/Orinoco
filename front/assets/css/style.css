@@ -10,14 +10,58 @@
   font-style: normal;
 }
 
+a:link {
+  cursor: pointer;
+}
+
+a {
+  color: black;
+}
+
+/* HEADER */ 
+
 .title-font,
 .nav-link {
   font-family: "Belligerent-Madness";
 }
 
+.navbar-top {
+  border-bottom: 1px black solid;
+  width: 90%;
+  margin: auto;
+}
+
 .title-font {
   margin: auto;
 }
+
+.page-header {
+  margin-bottom: 3rem;
+}
+
+.brand-logo {
+  width: 4rem;
+}
+
+.badge {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  padding: 0;
+  background-color: #dd3251;
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 18px;
+  display: inline-block;
+  min-width: 10px;
+  color: #fff;
+  vertical-align: middle;
+  white-space: nowrap;
+  text-align: center;
+  border-radius: 10px;
+}
+
+/* MAIN */
 
 .cameras,
 .card-title,
@@ -27,21 +71,13 @@
   text-align: center;
 }
 
-.page-header {
-  margin-bottom: 3rem;
-}
-
 .imgProducts {
   width: 18rem;
   height: 12rem;
 }
 
-.page-footer {
-  margin-top: 3rem;
-}
-
-a:link {
-  cursor: pointer;
+.card-img-top:hover{
+  zoom: 1.01;
 }
 
 .card {
@@ -51,10 +87,6 @@ a:link {
 a.card {
   text-decoration: none;
   color: black;
-}
-
-.brand-logo {
-  width: 4rem;
 }
 
 .full-card {
@@ -89,6 +121,9 @@ a.card {
 .btn-primary {
   width: 10rem;
   margin: auto;
+  background-color: rgb(238, 238, 238);
+  border: black solid 1px;
+  color: black;
 }
 
 .product,
@@ -98,7 +133,7 @@ a.card {
 }
 
 .head-list {
-  border-bottom: #eac3d7 solid 3px;
+  border-bottom: black solid 1px;
   padding-bottom: 1rem;
 }
 
@@ -132,24 +167,6 @@ a.card {
   display: block;
   margin: auto;
   margin-bottom: 3rem;
-}
-
-.badge {
-  position: absolute;
-  width: 18px;
-  height: 18px;
-  padding: 0;
-  background-color: #dd3251;
-  font-size: 14px;
-  font-weight: normal;
-  line-height: 18px;
-  display: inline-block;
-  min-width: 10px;
-  color: #fff;
-  vertical-align: middle;
-  white-space: nowrap;
-  text-align: center;
-  border-radius: 10px;
 }
 
 .message {
@@ -213,4 +230,11 @@ input:valid {
 .validation-btn {
   display: flex;
   justify-content: center;
+}
+
+/* FOOTER */
+
+.page-footer {
+  margin-top: 3rem;
+  border-top: solid 1px black;
 }

@@ -18,13 +18,3 @@ function has(name) {
 function set(name, value) {
   localStorage.setItem(name, JSON.stringify(value));
 }
-
-function sum( obj ) {
-  let sum = 0;
-  for( let el in obj ) {
-    if( obj.hasOwnProperty( el ) ) {
-      sum += parseFloat( obj[el] );
-    }
-  }
-  return sum;
-}

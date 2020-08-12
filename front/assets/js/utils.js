@@ -3,11 +3,13 @@ const url = basePath + "api/cameras/";
 
 displayHeaderQtyOfProductInCart();
 
+//function asynchrone récupérant les données de l'API
 async function fetchAjax(url) {
   const response = await fetch(url);
   return await response.json();
 }
 
+//Vérifie si il y a des produit dans le pannier
 function cartHasProduct(productId) {
   let products = get("products");
   if (products) {
@@ -15,10 +17,12 @@ function cartHasProduct(productId) {
   }
 }
 
+//Affiche le nombre de produits dans le panier 
 function displayHeaderQtyOfProductInCart() {
   document.querySelector(".cart span").textContent = getTotalProductsInCart();
 }
 
+//Récupère le nombre total de produits dans le panier
 function getTotalProductsInCart() {
   let total = 0;
 
@@ -29,6 +33,7 @@ function getTotalProductsInCart() {
   return total;
 }
 
+//Rendu de l'affichage des produits en fonction du type 
 function renderProduct(product, type) {
   if (type === "card") {
     return `
@@ -89,8 +94,21 @@ function renderProduct(product, type) {
   }
 }
 
+//function addition prix
+function sum( obj ) {
+  let sum = 0;
+  for( let el in obj ) {
+    if( obj.hasOwnProperty( el ) ) {
+      sum += parseFloat( obj[el] );
+    }
+  }
+  return sum;
+}
+
+//Additionne le prix des différents produits du panier 
 function sumProductsPrice() {
   let totalCartPrice = sum(JSON.parse(localStorage.price));
   document.getElementById("count-total").innerHTML =
   sumTotalCartPrice = totalCartPrice / 100 + ",OO €";
 }
+

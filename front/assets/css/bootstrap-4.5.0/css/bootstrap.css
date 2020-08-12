@@ -2757,9 +2757,9 @@ fieldset:disabled a.btn {
 }
 
 .btn-danger {
-  color: #fff;
-  background-color: #dc3545;
-  border-color: #dc3545;
+  color: black;
+  background-color: rgb(238, 238, 238);
+  border-color: black;
 }
 
 .btn-danger:hover {
@@ -6787,7 +6787,7 @@ button.bg-danger:focus {
 }
 
 .bg-light {
-  background-color: #f3e9f1 !important;
+  background-color: white !important;
 }
 
 a.bg-light:hover, a.bg-light:focus,
