@@ -11,7 +11,7 @@ const postData = async (method, url, dataElt) => {
 
 updatePageStatus();
 
-if (has("products")) {
+if (engine.has("products")) {
   fetchAjax(url).then(function (allProducts) {
     let productsInCart = getCartProduct(allProducts);
     displayProducts(productsInCart);
@@ -38,7 +38,7 @@ function displayTotal(total) {
 function getCartProduct(allProducts) {
   let products = [];
 
-  get("products").forEach((productId) => {
+  engine.get("products").forEach((productId) => {
     allProducts.forEach((product) => {
       if (product._id != productId) {
         return null;
@@ -122,9 +122,9 @@ function isFirstNameValid() {
   let firstName = document.getElementById("firstName").value;
 
   if (firstName.length > 3) {
-    colorFormValid("firstName")
+    colorFormValid("firstName");
     return true;
-  }else {
+  } else {
     colorFormError("firstName");
   }
 
@@ -148,13 +148,12 @@ function isLastNameValid() {
   let lastName = document.getElementById("lastName").value;
 
   if (lastName.length > 2 && lastName.length < 200) {
-    colorFormValid("lastName")
+    colorFormValid("lastName");
     return true;
   } else {
     colorFormError("lastName");
   }
   return false;
-  
 }
 
 //Vérifie si le code postale est valide
@@ -162,10 +161,10 @@ function isPostcodeValid() {
   let postcode = document.getElementById("code-postal").value;
 
   if (postcode.length === 5) {
-    colorFormValid("code-postal")
+    colorFormValid("code-postal");
     return true;
   } else {
-    colorFormError("code-postal")
+    colorFormError("code-postal");
   }
 
   return false;
@@ -174,7 +173,7 @@ function isPostcodeValid() {
 //Ecouter sur le bouton clear-cart, vide le panier au clic
 function listenForCartCleanup() {
   document.querySelector(".clear-cart").addEventListener("click", function () {
-    clear();
+    engine.clear();
     displayHeaderQtyOfProductInCart();
     updatePageStatus();
   });
@@ -206,7 +205,7 @@ function listenForSubmission() {
         city: document.getElementById("city").value,
         email: document.getElementById("email").value,
       },
-      products: get("products"),
+      products: engine.get("products"),
     };
     let response = await postData(
       "POST",
@@ -214,7 +213,6 @@ function listenForSubmission() {
       payload
     );
     let total = document.getElementById("count-total").innerHTML;
-    console.log(total);
     window.location = `./checkout.html?id=${response.orderId}&user=${firstName.value}&price=${total}`; // Redirige vers la page de confirmation de commande
   });
 }

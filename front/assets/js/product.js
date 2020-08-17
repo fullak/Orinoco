@@ -12,9 +12,9 @@ fetchAjax(url + getProductId()).then(function (product) {
 });
 
 function addToCart(product) {
-  let products = get("products") ?? [];
+  let products = engine.get("products") ?? [];
   products.push(product._id);
-  set("products", products);
+  engine.set("products", products);
 }
 
 function displayProduct(product) {
@@ -36,12 +36,12 @@ function enableAddToCartButton() {
 //Change l'affichage du bouton d'ajout au panier si le produit y est deja
 function updateAddToCartButtonStatus(productId) {
 
-  if (!has('products')) {
+  if (!engine.has('products')) {
     enableAddToCartButton();
     return;
   }
   
-  let productsInCart = get('products');
+  let productsInCart = engine.get('products');
 
   if (productsInCart.includes(productId)) {
     disableAddToCartButton();
