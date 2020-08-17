@@ -12,51 +12,65 @@ const postData = async (method, url, dataElt) => {
 updatePageStatus();
 
 if (has("products")) {
-  fetchAjax(url).then(function (products) {
-    displayProducts(products);
+  fetchAjax(url).then(function (allProducts) {
+    let productsInCart = getCartProduct(allProducts);
+    displayProducts(productsInCart);
+    // let total = getTotal(productsInCart);
+    // displayTotal(total);
     listenForSubmission();
     listenForCartCleanup();
-    sumProductsPrice();
     listenForChange();
   });
 }
 
-//Affiche un message si le panier est vide
-function displayEmptyCartNotice() {
-  document.getElementById("messageEnabled").style.display = "block";
+// function getTotal(product) {
+//   let total = 0;
+
+//   products.forEach((product) => {
+//     total += product.price
+//   });
+
+//   return total;
+// }
+
+function getCartProduct(allProducts) {
+  let products = [];
+
+  get('products').forEach((productId) => {
+    allProducts.forEach((product) => {
+      if (product._id != productId) {
+        return null;
+      } else {
+        products.push(product);
+      }
+    });
+  });
+  return products;
 }
 
 //Affiche les produits dans le panier
 function displayProducts(products) {
   let html = "";
-
-  get("products").forEach((productId) => {
-    products.forEach((product) => {
-      if (product._id != productId) {
-        return null;
-      } else {
-        html += renderProduct(product, "cart");
-      }
-    });
+  products.forEach((product) => {
+    html += renderProduct(product, "cart");
   });
-  document.querySelector("#products").innerHTML = html;
+  document.querySelector('#products').innerHTML = html;
 }
 
 //Désactive le bouton d'envoi du formulaire
 function disableSubmitButton() {
-  document.getElementById("formIsUnvalide").style.display = "block";
-  document.getElementById("validate").style.display = "none";
+  show("formIsUnvalide");
+  hide("validate");
 }
 
-
 function disableValidationOrder() {
-  document.getElementById("formDisabled").style.display = "none";
+  hide("formDisabled");
 }
 
 //Active le bouton d'envoi du formulaire
 function enableSubmitButton() {
-  document.getElementById("validate").style.display = "block";
-  document.getElementById("formIsUnvalide").style.display = "none";
+  show("validate");
+  hide("formIsUnvalide");
 }
 
 //Vérifie si l'adresse est valide
@@ -187,7 +201,9 @@ function listenForSubmission() {
 //Condition qui affiche soit le message de panier vide, ou la liste des produits et le formulaire
 function updatePageStatus() {
   if (getTotalProductsInCart() <= 0) {
-    displayEmptyCartNotice();
+    show("empty-cart-notice");
     disableValidationOrder();
+  } else {
+    hide("empty-cart-notice");
   }
 }

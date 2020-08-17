@@ -94,21 +94,12 @@ function renderProduct(product, type) {
   }
 }
 
-//function addition prix
-function sum( obj ) {
-  let sum = 0;
-  for( let el in obj ) {
-    if( obj.hasOwnProperty( el ) ) {
-      sum += parseFloat( obj[el] );
-    }
-  }
-  return sum;
+
+function hide(id){
+  document.getElementById(id).style.display = "none";
 }
 
-//Additionne le prix des différents produits du panier 
-function sumProductsPrice() {
-  let totalCartPrice = sum(JSON.parse(localStorage.price));
-  document.getElementById("count-total").innerHTML =
-  sumTotalCartPrice = totalCartPrice / 100 + ",OO €";
+function show(id){
+  document.getElementById(id).style.display = "block";
 }
 

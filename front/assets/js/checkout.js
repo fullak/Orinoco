@@ -36,7 +36,7 @@ function displayCheckout() {
   `;
   domElement.innerHTML = html;
   disabledNavigationButtons()
-  sumProductsPrice();
+  // sumProductsPrice();
   backToHome();
 }
 
