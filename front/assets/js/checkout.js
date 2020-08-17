@@ -3,8 +3,10 @@ displayCheckout();
 const orderInformation = window.location.search.substr(1).split("&");
 const orderId = orderInformation[0].replace("id=", "");
 const userName = orderInformation[1].replace("user=", "");
+const total = orderInformation[2].replace("price=", "");
 document.querySelector(".user").textContent += " " + userName + " !";
 document.querySelector(".order-id").textContent += " " + orderId + ".";
+document.querySelector(".total").textContent += " " + total + ",00€.";
 
 //function permettant de retourner à l'accueil et de vide le localStorage
 function backToHome() {
@@ -36,7 +38,6 @@ function displayCheckout() {
   `;
   domElement.innerHTML = html;
   disabledNavigationButtons()
-  // sumProductsPrice();
   backToHome();
 }
 

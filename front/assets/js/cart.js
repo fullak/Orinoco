@@ -16,7 +16,6 @@ if (has("products")) {
     let productsInCart = getCartProduct(allProducts);
     displayProducts(productsInCart);
     let total = getTotal(productsInCart);
-    console.log(getTotal(productsInCart))
     displayTotal(total);
     listenForSubmission();
     listenForCartCleanup();
@@ -27,19 +26,19 @@ if (has("products")) {
 function getTotal(products) {
   let total = 0;
   products.forEach((product) => {
-    total += product.price
+    total += product.price;
   });
   return total;
 }
 
 function displayTotal(total) {
-  document.querySelector('#count-total').textContent += " " + total / 100 + ",00€ !";
+  document.querySelector("#count-total").textContent += total / 100;
 }
 
 function getCartProduct(allProducts) {
   let products = [];
 
-  get('products').forEach((productId) => {
+  get("products").forEach((productId) => {
     allProducts.forEach((product) => {
       if (product._id != productId) {
         return null;
@@ -57,7 +56,7 @@ function displayProducts(products) {
   products.forEach((product) => {
     html += renderProduct(product, "cart");
   });
-  document.querySelector('#products').innerHTML = html;
+  document.querySelector("#products").innerHTML = html;
 }
 
 //Désactive le bouton d'envoi du formulaire
@@ -81,7 +80,10 @@ function isAddressValid() {
   let address = document.getElementById("address").value;
 
   if (address.length > 5) {
+    colorFormValid("address");
     return true;
+  } else {
+    colorFormError("address");
   }
 
   return false;
@@ -92,7 +94,10 @@ function isCityValid() {
   let city = document.getElementById("city").value;
 
   if (city.length > 2) {
+    colorFormValid("city");
     return true;
+  } else {
+    colorFormError("city");
   }
 
   return false;
@@ -103,7 +108,10 @@ function isEmailValid() {
   let email = document.getElementById("email").value;
 
   if (email.length > 4 && email.length < 320) {
+    colorFormValid("email");
     return true;
+  } else {
+    colorFormError("email");
   }
 
   return false;
@@ -114,7 +122,10 @@ function isFirstNameValid() {
   let firstName = document.getElementById("firstName").value;
 
   if (firstName.length > 3) {
+    colorFormValid("firstName")
     return true;
+  }else {
+    colorFormError("firstName");
   }
 
   return false;
@@ -137,10 +148,13 @@ function isLastNameValid() {
   let lastName = document.getElementById("lastName").value;
 
   if (lastName.length > 2 && lastName.length < 200) {
+    colorFormValid("lastName")
     return true;
+  } else {
+    colorFormError("lastName");
   }
-
   return false;
+  
 }
 
 //Vérifie si le code postale est valide
@@ -148,7 +162,10 @@ function isPostcodeValid() {
   let postcode = document.getElementById("code-postal").value;
 
   if (postcode.length === 5) {
+    colorFormValid("code-postal")
     return true;
+  } else {
+    colorFormError("code-postal")
   }
 
   return false;
@@ -191,14 +208,15 @@ function listenForSubmission() {
       },
       products: get("products"),
     };
-
     let response = await postData(
       "POST",
       "http://localhost:3000/api/cameras/order",
       payload
     );
-      window.location = `./checkout.html?id=${response.orderId}&user=${firstName.value}`; // Redirige vers la page de confirmation de commande
-    });
+    let total = document.getElementById("count-total").innerHTML;
+    console.log(total);
+    window.location = `./checkout.html?id=${response.orderId}&user=${firstName.value}&price=${total}`; // Redirige vers la page de confirmation de commande
+  });
 }
 
 //Condition qui affiche soit le message de panier vide, ou la liste des produits et le formulaire
@@ -209,4 +227,12 @@ function updatePageStatus() {
   } else {
     hide("empty-cart-notice");
   }
+}
+
+function colorFormError(id) {
+  document.getElementById(id).style.border = "2px solid red";
+}
+
+function colorFormValid(id) {
+  document.getElementById(id).style.border = "2px solid green";
 }

@@ -209,14 +209,6 @@ a.card {
   display: none;
 }
 
-input:invalid {
-  border: 2px solid red;
-}
-
-input:valid {
-  border: 1px solid black;
-}
-
 .total {
     justify-content: center;
     margin: 2rem 0;

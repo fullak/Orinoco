@@ -17,7 +17,7 @@ function cartHasProduct(productId) {
   }
 }
 
-//Affiche le nombre de produits dans le panier 
+//Affiche le nombre de produits dans le panier
 function displayHeaderQtyOfProductInCart() {
   document.querySelector(".cart span").textContent = getTotalProductsInCart();
 }
@@ -33,12 +33,12 @@ function getTotalProductsInCart() {
   return total;
 }
 
-//Rendu de l'affichage des produits en fonction du type 
+//Rendu de l'affichage des produits en fonction du type
 function renderProduct(product, type) {
   if (type === "card") {
     return `
         <div class="a-card">
-        <a href="/front/pages/product.html?id=${product._id}&price=${product.price}" id="${
+        <a href="/front/pages/product.html?id=${product._id}" id="${
       product._id
     }" class="card">
         <img class="card-img-top imgProducts" src="${
@@ -74,7 +74,6 @@ function renderProduct(product, type) {
                 </div>
                 <p class="card-text">${product.description}</p>
                 <p class="card-text">${product.price / 100}€</p>
-
             </div>
         </div>`;
   }
@@ -83,7 +82,9 @@ function renderProduct(product, type) {
     return `
       <div class="container head-list">
         <div class="row card-cart">
-          <img class="card-img-top cart-img col-2" src="${product.imageUrl}" alt="card image cap">
+          <img class="card-img-top cart-img col-2" src="${
+            product.imageUrl
+          }" alt="card image cap">
           <p class="card-title name-item col-2">${product.name}</p>
           <p class="card-text price-item col-4">${product.price / 100},00 €</p>
           <p class="card-text quantity-item col-3">1</p>
@@ -94,12 +95,10 @@ function renderProduct(product, type) {
   }
 }
 
-
-function hide(id){
+function hide(id) {
   document.getElementById(id).style.display = "none";
 }
 
-function show(id){
+function show(id) {
   document.getElementById(id).style.display = "block";
 }
-
