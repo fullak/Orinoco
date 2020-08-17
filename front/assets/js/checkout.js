@@ -12,7 +12,7 @@ document.querySelector(".total").textContent += " " + total + ",00€.";
 function backToHome() {
   let back = document.getElementById('go-back');
   back.addEventListener('click', function(){
-      engine.clear();
+      storage.clear();
   })
 };
 

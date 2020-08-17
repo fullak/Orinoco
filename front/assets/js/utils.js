@@ -11,7 +11,7 @@ async function fetchAjax(url) {
 
 //Vérifie si il y a des produit dans le pannier
 function cartHasProduct(productId) {
-  let products = engine.get("products");
+  let products = storage.get("products");
   if (products) {
     return products.includes(productId);
   }
@@ -26,8 +26,8 @@ function displayHeaderQtyOfProductInCart() {
 function getTotalProductsInCart() {
   let total = 0;
 
-  if (engine.has("products")) {
-    total = engine.get("products").length;
+  if (storage.has("products")) {
+    total = storage.get("products").length;
   }
 
   return total;

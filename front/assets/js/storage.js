@@ -1,21 +1,22 @@
-const engine = {
+const engine = localStorage;
+const storage = {
 
   clear: function() {
-    localStorage.clear();
+    engine.clear();
   },
 
   get: function(name) {
-    if (localStorage.getItem(name)) {
-      return JSON.parse(localStorage.getItem(name));
+    if (engine.getItem(name)) {
+      return JSON.parse(engine.getItem(name));
     }
     return null;
   },
 
   has: function(name) {
-    return localStorage.getItem(name);
+    return engine.getItem(name);
   },
-  
+
   set: function(name, value) {
-    localStorage.setItem(name, JSON.stringify(value));
+    engine.setItem(name, JSON.stringify(value));
   }
 }
