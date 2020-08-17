@@ -24,12 +24,10 @@ if (engine.has("products")) {
 }
 
 function getTotal(products) {
-  let total = 0;
-  products.forEach((product) => {
-    total += product.price;
-  });
-  return total;
-}
+  return products.reduce((total, product) => {
+    return total + (product.price)
+  }, 0)
+};
 
 function displayTotal(total) {
   document.querySelector("#count-total").textContent += total / 100;
