@@ -15,23 +15,26 @@ if (has("products")) {
   fetchAjax(url).then(function (allProducts) {
     let productsInCart = getCartProduct(allProducts);
     displayProducts(productsInCart);
-    // let total = getTotal(productsInCart);
-    // displayTotal(total);
+    let total = getTotal(productsInCart);
+    console.log(getTotal(productsInCart))
+    displayTotal(total);
     listenForSubmission();
     listenForCartCleanup();
     listenForChange();
   });
 }
 
-// function getTotal(product) {
-//   let total = 0;
+function getTotal(products) {
+  let total = 0;
+  products.forEach((product) => {
+    total += product.price
+  });
+  return total;
+}
 
-//   products.forEach((product) => {
-//     total += product.price
-//   });
-
-//   return total;
-// }
+function displayTotal(total) {
+  document.querySelector('#count-total').textContent += " " + total / 100 + ",00€ !";
+}
 
 function getCartProduct(allProducts) {
   let products = [];
