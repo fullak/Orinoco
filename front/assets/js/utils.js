@@ -3,15 +3,16 @@ const url = basePath + "api/cameras/";
 
 displayHeaderQtyOfProductInCart();
 
-//function asynchrone récupérant les données de l'API
-async function fetchAjax(url) {
-  const response = await fetch(url);
-  return await response.json();
+
+// function asynchrone récupérant les données de l'API
+ async function fetchAjax(url) {
+   const response = await fetch(url);
+   return await response.json();
 }
 
 //Vérifie si il y a des produit dans le pannier
 function cartHasProduct(productId) {
-  let products = storage.get("products");
+  let products = Storage.get("products");
   if (products) {
     return products.includes(productId);
   }
@@ -26,8 +27,8 @@ function displayHeaderQtyOfProductInCart() {
 function getTotalProductsInCart() {
   let total = 0;
 
-  if (storage.has("products")) {
-    total = storage.get("products").length;
+  if (Storage.has("products")) {
+    total = Storage.get("products").length;
   }
 
   return total;

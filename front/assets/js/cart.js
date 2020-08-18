@@ -11,7 +11,7 @@ const postData = async (method, url, dataElt) => {
 
 updatePageStatus();
 
-if (storage.has("products")) {
+if (Storage.has("products")) {
   fetchAjax(url).then(function (allProducts) {
     let productsInCart = getCartProduct(allProducts);
     displayProducts(productsInCart);
@@ -25,9 +25,9 @@ if (storage.has("products")) {
 
 function getTotal(products) {
   return products.reduce((total, product) => {
-    return total + (product.price)
-  }, 0)
-};
+    return total + product.price;
+  }, 0);
+}
 
 function displayTotal(total) {
   document.querySelector("#count-total").textContent += total / 100;
@@ -36,7 +36,7 @@ function displayTotal(total) {
 function getCartProduct(allProducts) {
   let products = [];
 
-  storage.get("products").forEach((productId) => {
+  Storage.get("products").forEach((productId) => {
     allProducts.forEach((product) => {
       if (product._id != productId) {
         return null;
@@ -171,7 +171,7 @@ function isPostcodeValid() {
 //Ecouter sur le bouton clear-cart, vide le panier au clic
 function listenForCartCleanup() {
   document.querySelector(".clear-cart").addEventListener("click", function () {
-    storage.clear();
+    Storage.clear();
     displayHeaderQtyOfProductInCart();
     updatePageStatus();
   });
@@ -203,7 +203,7 @@ function listenForSubmission() {
         city: document.getElementById("city").value,
         email: document.getElementById("email").value,
       },
-      products: storage.get("products"),
+      products: Storage.get("products"),
     };
     let response = await postData(
       "POST",
