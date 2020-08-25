@@ -1,14 +1,3 @@
-const postData = async (method, url, dataElt) => {
-  const response = await fetch(url, {
-    headers: {
-      "Content-Type": "application/json",
-    },
-    method,
-    body: JSON.stringify(dataElt),
-  });
-  return await response.json();
-};
-
 updatePageStatus();
 
 if (Storage.has("products")) {
@@ -20,19 +9,22 @@ if (Storage.has("products")) {
     listenForSubmission();
     listenForCartCleanup();
     listenForChange();
-  });
+  }); 
 }
 
+// Récupère le prix total des produits
 function getTotal(products) {
   return products.reduce((total, product) => {
     return total + product.price;
   }, 0);
 }
 
+// Affiche le prix Total du panier
 function displayTotal(total) {
   document.querySelector("#count-total").textContent += total / 100;
 }
 
+// Récupère les produits dans le panier
 function getCartProduct(allProducts) {
   let products = [];
 
@@ -63,6 +55,7 @@ function disableSubmitButton() {
   hide("validate");
 }
 
+// Cache le formulaire de commande
 function disableValidationOrder() {
   hide("formDisabled");
 }
@@ -137,7 +130,8 @@ function isFormValid() {
     isEmailValid() &&
     isAddressValid() &&
     isPostcodeValid() &&
-    isCityValid()
+    isCityValid() && 
+    Storage.has('products')
   );
 }
 
@@ -225,10 +219,24 @@ function updatePageStatus() {
   }
 }
 
+// Change la couleur des bordures du formulaire en rouge
 function colorFormError(id) {
   document.getElementById(id).style.border = "2px solid red";
 }
 
+// Change la couleur des bordures du formulaire en vert
 function colorFormValid(id) {
   document.getElementById(id).style.border = "2px solid green";
 }
+
+// Fonction envoyant les données de commande a l'api et retourne une reponse .json
+async function postData (method, url, dataElt) {
+  const response = await fetch(url, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+    method,
+    body: JSON.stringify(dataElt),
+  });
+  return await response.json();
+};

@@ -1,4 +1,6 @@
 displayCheckout();
+disabledNavigationButtons()
+backToHome();
 
 const orderInformation = window.location.search.substr(1).split("&");
 const orderId = orderInformation[0].replace("id=", "");
@@ -37,8 +39,6 @@ function displayCheckout() {
     </div>   
   `;
   domElement.innerHTML = html;
-  disabledNavigationButtons()
-  backToHome();
 }
 
 //Désactive les boutons de navigation

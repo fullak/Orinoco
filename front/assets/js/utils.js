@@ -3,11 +3,10 @@ const url = basePath + "api/cameras/";
 
 displayHeaderQtyOfProductInCart();
 
-
 // function asynchrone récupérant les données de l'API
- async function fetchAjax(url) {
-   const response = await fetch(url);
-   return await response.json();
+async function fetchAjax(url) {
+  const response = await fetch(url);
+  return await response.json();
 }
 
 //Vérifie si il y a des produit dans le pannier
@@ -61,13 +60,13 @@ function renderProduct(product, type) {
                   product.imageUrl
                 }" alt="Card image cap">
             </div>
-            <div class="container card-body full-card-body col-6">
+            <div class="container card-body full-card-body col-4">
                 <h3 class="card-title">${product.name}</h3>
                 <div class="btn-group">
                   <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Lenses
                   </button>
-                  <div class="dropdown-menu">
+                  <div class="dropdown-menu" id="dropdown-list">
                     <a class="dropdown-item" href="#">${product.lenses[0]}</a>
                     <a class="dropdown-item" href="#">${product.lenses[1]}</a>
                     <a class="dropdown-item" href="#">${product.lenses[2]}</a>
@@ -96,10 +95,12 @@ function renderProduct(product, type) {
   }
 }
 
+// function pour cacher un élément
 function hide(id) {
   document.getElementById(id).style.display = "none";
 }
 
+// function pour afficher un élément
 function show(id) {
   document.getElementById(id).style.display = "block";
 }

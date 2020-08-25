@@ -1,21 +1,24 @@
+// Objet permettant d'accèder au différent action sur le localStorage
 const Storage = {
+
+  engine: localStorage,
   
   clear: function() {
-    localStorage.clear();
+    this.engine.clear();
   },
 
   get: function(name) {
-    if (localStorage.getItem(name)) {
-      return JSON.parse(localStorage.getItem(name));
+    if (this.engine.getItem(name)) {
+      return JSON.parse(this.engine.getItem(name));
     }
     return null;
   },
 
   has: function(name) {
-    return localStorage.getItem(name);
+    return this.engine.getItem(name);
   },
 
   set: function(name, value) {
-    localStorage.setItem(name, JSON.stringify(value));
+    this.engine.setItem(name, JSON.stringify(value));
   }
 }

@@ -11,12 +11,14 @@ fetchAjax(url + getProductId()).then(function (product) {
   });
 });
 
+// fonction ajoute le produit au panier
 function addToCart(product) {
   let products = Storage.get("products") ?? [];
   products.push(product._id);
   Storage.set("products", products);
 }
 
+// Affiche le détail du produit sélectionné
 function displayProduct(product) {
   document.querySelector("#product").innerHTML = renderProduct(product, "main");
 }
@@ -56,6 +58,4 @@ function updateAddToCartButtonStatus(productId) {
    const params = new URLSearchParams(window.location.search);
    return params.get("id");
 }
-
-
 
