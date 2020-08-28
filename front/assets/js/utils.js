@@ -9,14 +9,6 @@ async function fetchAjax(url) {
   return await response.json();
 }
 
-//Vérifie si il y a des produit dans le pannier
-function cartHasProduct(productId) {
-  let products = Storage.get("products");
-  if (products) {
-    return products.includes(productId);
-  }
-}
-
 //Affiche le nombre de produits dans le panier
 function displayHeaderQtyOfProductInCart() {
   document.querySelector(".cart span").textContent = getTotalProductsInCart();
@@ -29,7 +21,6 @@ function getTotalProductsInCart() {
   if (Storage.has("products")) {
     total = Storage.get("products").length;
   }
-
   return total;
 }
 
