@@ -97,8 +97,9 @@ function isCityValid() {
 //Vérifie si l'email est valide
 function isEmailValid() {
   let email = document.getElementById("email").value;
+  let mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
-  if (email.length > 4 && email.length < 320) {
+  if (email.match(mailFormat) && email.length > 4 && email.length < 320) {
     colorFormValid("email");
     return true;
   } else {
