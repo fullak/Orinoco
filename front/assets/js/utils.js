@@ -7,11 +7,11 @@ displayHeaderQtyOfProductInCart();
 async function fetchAjax(url) {
   const response = await fetch(url);
   if (!response.ok) {
-    alert('Une erreur est apparue ! Vous allez être redirigé.');
+    alert("Une erreur est apparue ! Vous allez être redirigé.");
     document.location.href = "/front/index.html";
   } else {
     return await response.json();
-  } 
+  }
 }
 
 //Affiche le nombre de produits dans le panier
@@ -34,43 +34,37 @@ function renderProduct(product, type) {
   if (type === "card") {
     return `
         <div class="a-card">
-        <a href="/front/pages/product.html?id=${product._id}" id="${
-      product._id
-    }" class="card">
-        <img class="card-img-top imgProducts" src="${
-          product.imageUrl
-        }" alt="Card image cap">
-        <div class="card-body">
+          <a href="/front/pages/product.html?id=${product._id}" id="${product._id}" class="card">
+          <img class="card-img-top imgProducts" src="${product.imageUrl}" alt="Card image cap">
+          <div class="card-body">
             <h3 class="card-title">${product.name}</h3>
             <p class="card-text">${product.price / 100}€</p>
-        </div>
-      </a>
-      </div>`;
+          </div>
+          </a>
+        </div>`;
   }
 
   if (type === "main") {
     return `
         <div class="container full-card">
-            <div class="row img-card col-6">
-                <img class="card-img-top productImg" src="${
-                  product.imageUrl
-                }" alt="Card image cap">
-            </div>
-            <div class="container card-body full-card-body col-4">
-                <h3 class="card-title">${product.name}</h3>
-                <div class="btn-group">
-                  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <div class="row img-card col-6">
+            <img class="card-img-top productImg" src="${product.imageUrl}" alt="Card image cap">
+          </div>
+          <div class="container card-body full-card-body col-4">
+            <h3 class="card-title">${product.name}</h3>
+            <div class="btn-group">
+              <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Lenses
-                  </button>
-                  <div class="dropdown-menu" id="dropdown-list">
-                    <a class="dropdown-item" href="#">${product.lenses[0]}</a>
-                    <a class="dropdown-item" href="#">${product.lenses[1]}</a>
-                    <a class="dropdown-item" href="#">${product.lenses[2]}</a>
-                  </div>
-                </div>
-                <p class="card-text">${product.description}</p>
-                <p class="card-text">${product.price / 100}€</p>
+              </button>
+              <div class="dropdown-menu" id="dropdown-list">
+                <a class="dropdown-item" href="#">${product.lenses[0]}</a>
+                <a class="dropdown-item" href="#">${product.lenses[1]}</a>
+                <a class="dropdown-item" href="#">${product.lenses[2]}</a>
+              </div>
             </div>
+            <p class="card-text">${product.description}</p>
+            <p class="card-text">${product.price / 100}€</p>
+          </div>
         </div>`;
   }
 
@@ -78,9 +72,7 @@ function renderProduct(product, type) {
     return `
       <div class="container head-list">
         <div class="row card-cart">
-          <img class="card-img-top cart-img col-2" src="${
-            product.imageUrl
-          }" alt="card image cap">
+          <img class="card-img-top cart-img col-2" src="${product.imageUrl}" alt="card image cap">
           <p class="card-title name-item col-2">${product.name}</p>
           <p class="card-text price-item col-4">${product.price / 100},00 €</p>
           <p class="card-text quantity-item col-3">1</p>
