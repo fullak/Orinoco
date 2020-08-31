@@ -121,9 +121,9 @@ function isFirstNameValid() {
 //Condition vérifiant si tous les inputs du formulaire sont valide
 function isFormValid() {
   return (
+    isEmailValid() &&
     isFirstNameValid() &&
     isLastNameValid() &&
-    isEmailValid() &&
     isAddressValid() &&
     isPostcodeValid() &&
     isCityValid() && 
