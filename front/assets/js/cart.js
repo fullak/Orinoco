@@ -55,11 +55,6 @@ function disableSubmitButton() {
   hide("validate");
 }
 
-// Cache le formulaire de commande
-function disableValidationOrder() {
-  hide("formDisabled");
-}
-
 //Active le bouton d'envoi du formulaire
 function enableSubmitButton() {
   show("validate");
@@ -214,7 +209,7 @@ function listenForSubmission() {
 function updatePageStatus() {
   if (getTotalProductsInCart() <= 0) {
     show("empty-cart-notice");
-    disableValidationOrder();
+    hide("formDisabled");
   } else {
     hide("empty-cart-notice");
   }

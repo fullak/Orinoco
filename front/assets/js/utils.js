@@ -6,7 +6,12 @@ displayHeaderQtyOfProductInCart();
 // function asynchrone récupérant les données de l'API
 async function fetchAjax(url) {
   const response = await fetch(url);
-  return await response.json();
+  if (!response.ok) {
+    alert('Une erreur est apparue ! Vous allez être redirigé.');
+    document.location.href = "/front/index.html";
+  } else {
+    return await response.json();
+  } 
 }
 
 //Affiche le nombre de produits dans le panier

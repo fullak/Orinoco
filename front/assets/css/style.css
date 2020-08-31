@@ -224,6 +224,11 @@ a.card {
   justify-content: center;
 }
 
+.checkout-form {
+  width: 70%;
+  margin: auto;
+}
+
 /* FOOTER */
 
 .page-footer {
